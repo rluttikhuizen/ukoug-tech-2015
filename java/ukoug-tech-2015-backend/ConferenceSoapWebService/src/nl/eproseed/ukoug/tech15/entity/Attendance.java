@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import java.math.BigDecimal;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -26,6 +30,11 @@ public class Attendance implements Serializable {
     private BigDecimal id;
     @Column(length = 100)
     private String status;
+    @Column(length = 100)
+    private String evaluation;
+    @Column(name = "EVALUATION_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date evaluationTimestamp;
     @ManyToOne
     @JoinColumn(name = "ATTENDEE_ID")
     // Use to break cyclic error for JAX-WS
@@ -63,6 +72,22 @@ public class Attendance implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setEvaluation(String evaluation) {
+        this.evaluation = evaluation;
+    }
+
+    public String getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluationTimestamp(Date evaluationTimestamp) {
+        this.evaluationTimestamp = evaluationTimestamp;
+    }
+
+    public Date getEvaluationTimestamp() {
+        return evaluationTimestamp;
     }
 
     public Attendee getAttendee() {

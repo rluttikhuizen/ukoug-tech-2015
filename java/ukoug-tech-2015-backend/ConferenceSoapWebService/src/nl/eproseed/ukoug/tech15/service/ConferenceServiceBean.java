@@ -37,22 +37,28 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     private Object queryByRange(String jpqlStmt, int firstResult, int maxResults) {
+        
         Query query = em.createQuery(jpqlStmt);
+        
         if (firstResult > 0) {
             query = query.setFirstResult(firstResult);
         }
+        
         if (maxResults > 0) {
             query = query.setMaxResults(maxResults);
         }
+        
         return query.getResultList();
     }
 
     private <T> T persistEntity(T entity) {
+        
         em.persist(entity);
         return entity;
     }
 
     private <T> T mergeEntity(T entity) {
+        
         return em.merge(entity);
     }
 
