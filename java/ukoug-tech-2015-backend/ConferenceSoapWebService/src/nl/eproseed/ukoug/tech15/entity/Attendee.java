@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
               @NamedQuery(name = "Attendee.findAll", query = "select o from Attendee o"),
               @NamedQuery(name = "Attendee.findById", query = "select o from Attendee o where o.id = :id")
     })
-@XmlType(propOrder = { "id", "name", "company", "attendanceList" })
+@XmlType(propOrder = { "id", "name", "company", "username", "attendanceList" })
 public class Attendee implements Serializable {
 
     private static final long serialVersionUID = -3220046354811442185L;
@@ -32,8 +32,10 @@ public class Attendee implements Serializable {
     @Id
     @Column(nullable = false)
     private BigDecimal id;
-    @Column(length = 200)
+    @Column(length = 200, nullable = false)
     private String name;
+    @Column(length = 200, nullable = false)
+    private String username;
     @OneToMany(mappedBy = "attendee", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @XmlElement(name = "attendance")
     private List<Attendance> attendanceList;
@@ -41,10 +43,12 @@ public class Attendee implements Serializable {
     public Attendee() {
     }
 
-    public Attendee(String company, BigDecimal id, String name) {
+    public Attendee(String company, BigDecimal id, String name, String username) {
+
         this.company = company;
         this.id = id;
         this.name = name;
+        this.username = username;
     }
 
     public String getCompany() {
@@ -69,6 +73,14 @@ public class Attendee implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public List<Attendance> getAttendanceList() {

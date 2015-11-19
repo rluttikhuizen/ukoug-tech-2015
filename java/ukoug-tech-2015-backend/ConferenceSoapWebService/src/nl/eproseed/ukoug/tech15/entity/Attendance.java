@@ -53,11 +53,14 @@ public class Attendance implements Serializable {
     public Attendance() {
     }
 
-    public Attendance(Attendee attendee, BigDecimal id, Presentation presentation, String status) {
+    public Attendance(Attendee attendee, BigDecimal id, Presentation presentation, String status, String evaluation, Date evaluationTimestamp) {
 
         this.attendee = attendee;
         this.id = id;
+        this.presentation = presentation;
         this.status = status;
+        this.evaluation = evaluation;
+        this.evaluationTimestamp = evaluationTimestamp;
     }
 
     public BigDecimal getId() {
