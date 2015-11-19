@@ -144,7 +144,7 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
         for (Presentation presentation : presentations) {
             
             presentation.setAttendanceList(null);
-            presentation.setAbstract_(null);            
+            presentation.setPresentationAbstract(null);            
             presentation.getSpeaker().setCompany(null);
             presentation.getSpeaker().setFirstname(null);
             presentation.getSpeaker().setLastname(null);

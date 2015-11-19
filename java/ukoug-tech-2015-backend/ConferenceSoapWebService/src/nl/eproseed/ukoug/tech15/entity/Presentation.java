@@ -21,17 +21,25 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Presentation.findAll", query = "select o from Presentation o"),
-                @NamedQuery(name = "Presentation.findById", query = "select o from Presentation o where o.id = :id")})
+@NamedQueries({
+              @NamedQuery(name = "Presentation.findAll", query = "select o from Presentation o"),
+              @NamedQuery(name = "Presentation.findById", query = "select o from Presentation o where o.id = :id")
+    })
+@XmlType(propOrder = {
+         "id", "title", "speaker", "coPresenter", "coPresenterEmail", "stream", "topic", "presentationFormat",
+         "presentationAbstract", "experience", "preferredLength", "contentLevel", "day", "sessionDate", "track", "startTime", "endTime",
+         "length", "hall", "presentationStatus", "attendanceList"
+    })
 public class Presentation implements Serializable {
-    
+
     private static final long serialVersionUID = -3310009164475122261L;
     @Column(name = "ABSTRACT")
-    private String abstract_;
+    private String presentationAbstract;
     @Column(name = "CONTENT_LEVEL")
     private BigDecimal contentLevel;
     @Column(name = "CO_PRESENTER", length = 200)
@@ -73,20 +81,21 @@ public class Presentation implements Serializable {
     @JoinColumn(name = "SPEAKER_ID")
     // Use to break cyclic error for JAX-WS
     @XmlElement
-    @XmlInverseReference(mappedBy="presentationList")
+    @XmlInverseReference(mappedBy = "presentationList")
     private Speaker speaker;
     @OneToMany(mappedBy = "presentation", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @XmlElement(name = "attendance")
     private List<Attendance> attendanceList;
 
     public Presentation() {
     }
 
-    public Presentation(String abstract_, String coPresenter, String coPresenterEmail, BigDecimal contentLevel,
+    public Presentation(String presentationAbstract, String coPresenter, String coPresenterEmail, BigDecimal contentLevel,
                         String day, String endTime, String experience, String hall, BigDecimal id, BigDecimal length,
                         String preferredLength, String presentationFormat, String presentationStatus, Date sessionDate,
                         Speaker speaker, String startTime, String stream, String title, String topic, String track) {
-        
-        this.abstract_ = abstract_;
+
+        this.presentationAbstract = presentationAbstract;
         this.coPresenter = coPresenter;
         this.coPresenterEmail = coPresenterEmail;
         this.contentLevel = contentLevel;
@@ -108,12 +117,12 @@ public class Presentation implements Serializable {
         this.track = track;
     }
 
-    public String getAbstract_() {
-        return abstract_;
+    public String getPresentationAbstract() {
+        return presentationAbstract;
     }
 
-    public void setAbstract_(String abstract_) {
-        this.abstract_ = abstract_;
+    public void setPresentationAbstract(String presentationAbstract) {
+        this.presentationAbstract = presentationAbstract;
     }
 
     public BigDecimal getContentLevel() {
@@ -219,7 +228,6 @@ public class Presentation implements Serializable {
     public void setSessionDate(Date sessionDate) {
         this.sessionDate = sessionDate;
     }
-
 
     public String getStartTime() {
         return startTime;

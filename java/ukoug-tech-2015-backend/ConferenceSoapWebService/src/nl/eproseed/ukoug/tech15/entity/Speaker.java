@@ -15,15 +15,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 @Entity
 @NamedQueries({
               @NamedQuery(name = "Speaker.findAll", query = "select o from Speaker o"),
               @NamedQuery(name = "Speaker.findById", query = "select o from Speaker o where o.id = :id")
     })
+@XmlType(propOrder = { "id", "firstname", "lastname", "company", "speakerBio", "presentationList" })
 public class Speaker implements Serializable {
 
     private static final long serialVersionUID = 8466972298834310902L;
-    
+
     @Id
     @Column(nullable = false)
     private BigDecimal id;
@@ -36,13 +40,14 @@ public class Speaker implements Serializable {
     @Column(name = "SPEAKER_BIO")
     private String speakerBio;
     @OneToMany(mappedBy = "speaker", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @XmlElement(name = "presentation")
     private List<Presentation> presentationList;
 
     public Speaker() {
     }
 
     public Speaker(BigDecimal id, String company, String firstname, String lastname, String speakerBio) {
-        
+
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;

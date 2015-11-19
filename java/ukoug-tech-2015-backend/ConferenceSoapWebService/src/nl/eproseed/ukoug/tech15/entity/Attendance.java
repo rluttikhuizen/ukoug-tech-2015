@@ -17,11 +17,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Attendance.findAll", query = "select o from Attendance o") })
+@XmlType(propOrder = { "id", "attendee", "presentation", "status", "evaluation", "evaluationTimestamp" })
 public class Attendance implements Serializable {
 
     private static final long serialVersionUID = -2352820538098469942L;
@@ -39,13 +41,13 @@ public class Attendance implements Serializable {
     @JoinColumn(name = "ATTENDEE_ID")
     // Use to break cyclic error for JAX-WS
     @XmlElement
-    @XmlInverseReference(mappedBy="attendanceList")
+    @XmlInverseReference(mappedBy = "attendanceList")
     private Attendee attendee;
     @ManyToOne
     @JoinColumn(name = "PRESENTATION_ID")
     // Use to break cyclic error for JAX-WS
     @XmlElement
-    @XmlInverseReference(mappedBy="attendanceList") 
+    @XmlInverseReference(mappedBy = "attendanceList")
     private Presentation presentation;
 
     public Attendance() {
