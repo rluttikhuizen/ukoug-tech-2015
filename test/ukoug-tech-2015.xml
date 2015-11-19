@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-workspace name="UKOUG_Tech_2015" soapui-version="5.1.3" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:project name="ConferenceSoapWebService">C:/Users/luttir/Google Drive/UKOUG Tech 15 Super Sunday/Test/ConferenceSoapWebService-soapui-project.xml</con:project>
+</con:soapui-workspace>
