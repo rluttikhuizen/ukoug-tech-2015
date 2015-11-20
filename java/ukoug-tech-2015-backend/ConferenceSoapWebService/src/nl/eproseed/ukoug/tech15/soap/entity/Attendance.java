@@ -22,6 +22,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import nl.eproseed.ukoug.tech15.soap.enumeration.EvaluationEnum;
+
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @Entity
@@ -119,5 +121,25 @@ public class Attendance implements Serializable {
 
     public void setPresentation(Presentation presentation) {
         this.presentation = presentation;
+    }
+    
+    public boolean containsEvaluation() {
+        
+        return evaluation != null;
+    }
+    
+    public boolean isPositiveEvaluation() {
+        
+        return containsEvaluation() && EvaluationEnum.POSITIVE.name().equals(evaluation);
+    }
+    
+    public boolean isNegativeEvaluation() {
+        
+        return containsEvaluation() && EvaluationEnum.NEGATIVE.name().equals(evaluation);
+    }
+    
+    public boolean isNeutralEvaluation() {
+        
+        return containsEvaluation() && EvaluationEnum.NEUTRAL.name().equals(evaluation);
     }
 }

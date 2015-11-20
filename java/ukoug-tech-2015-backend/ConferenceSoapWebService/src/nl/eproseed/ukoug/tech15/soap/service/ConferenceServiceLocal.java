@@ -8,6 +8,7 @@ import javax.ejb.Local;
 
 import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
 import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.EvaluationSummary;
 import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
 import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
 
@@ -27,4 +28,6 @@ public interface ConferenceServiceLocal {
     Attendance getAttendanceById(BigDecimal attendanceId);
     Attendance createAttendance(BigDecimal attendeeId, BigDecimal presentationId);
     Attendance updateAttendance(BigDecimal attendanceId, String status, String evaluation);
+    
+    EvaluationSummary getEvaluationSummary(BigDecimal presentationId);
 }

@@ -13,6 +13,7 @@ import javax.jws.WebService;
 
 import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
 import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.EvaluationSummary;
 import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
 import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
 
@@ -61,4 +62,8 @@ public interface ConferenceSoapWebService extends Remote {
     public Attendance updateAttendance(@WebParam(name = "attendanceId") BigDecimal attendanceId,
                                        @WebParam(name = "status") String status,
                                        @WebParam(name = "evaluation") String evaluation);
+
+    @WebMethod
+    @WebResult(name = "evaluationSummary")
+    public EvaluationSummary getEvaluationSummary(@WebParam(name = "presentationId") BigDecimal presentationId);
 }

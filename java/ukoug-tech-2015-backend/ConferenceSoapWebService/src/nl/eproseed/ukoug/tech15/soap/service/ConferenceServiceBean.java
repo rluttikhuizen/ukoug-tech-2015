@@ -19,12 +19,13 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import nl.eproseed.ukoug.tech15.soap.exception.ConferenceException;
 import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
 import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.EvaluationSummary;
 import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
 import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
 import nl.eproseed.ukoug.tech15.soap.enumeration.EvaluationEnum;
+import nl.eproseed.ukoug.tech15.soap.exception.ConferenceException;
 
 @Stateless(name = "ConferenceService", mappedName = "ConferenceService")
 @WebService(serviceName = "ConferenceSoapWebService", portName = "ConferenceSoapWebServicePort",
@@ -151,7 +152,7 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
             attendee =
                 em.createNamedQuery("Attendee.findByUsername", Attendee.class).setParameter("username",
-                                                                                      username).getSingleResult();
+                                                                                            username).getSingleResult();
         } catch (NoResultException e) {
 
             throw new ConferenceException("No attendee found for attendee username " + username);
@@ -237,7 +238,7 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
         // Persist attendance
         attendance = persistEntity(attendance);
-        
+
         // Nulling detail information that is unnecessary for this operation. Better approach would be to have
         // separate entities to return in Web Service instead of using JPA entities directly
         attendance.getAttendee().setAttendanceList(null);
@@ -248,26 +249,26 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
     @Override
     public Attendance updateAttendance(BigDecimal attendanceId, String status, String evaluation) {
-        
+
         // Verify attendee
         if (attendanceId == null) {
             throw new ConferenceException("Attendance id cannot be null");
         }
 
         Attendance attendance = getAttendanceById(attendanceId);
-        
+
         if (status != null) {
             attendance.setStatus(status);
         }
-        
+
         if (evaluation != null) {
             attendance.setEvaluation(EvaluationEnum.valueOf(evaluation).name());
             attendance.setEvaluationTimestamp(new Date());
         }
-        
+
         // Update attendance
         attendance = mergeEntity(attendance);
-        
+
         // Nulling detail information that is unnecessary for this operation. Better approach would be to have
         // separate entities to return in Web Service instead of using JPA entities directly
         attendance.getAttendee().setAttendanceList(null);
@@ -286,12 +287,55 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
             attendance =
                 em.createNamedQuery("Attendance.findById", Attendance.class).setParameter("id",
-                                                                                              attendanceId).getSingleResult();
+                                                                                          attendanceId).getSingleResult();
         } catch (NoResultException e) {
 
             throw new ConferenceException("No attendance found for attendance id " + attendanceId);
         }
 
         return attendance;
+    }
+
+    @Override
+    public EvaluationSummary getEvaluationSummary(BigDecimal presentationId) {
+
+        Presentation presentation = getPresentationById(presentationId);
+
+        EvaluationSummary summary = new EvaluationSummary();
+
+        summary.setPresentationId(presentation.getId());
+        summary.setPresentationTitle(presentation.getTitle());
+
+        summary.setSpeakerId(presentation.getSpeaker().getId());
+        summary.setSpeakerFirstname(presentation.getSpeaker().getFirstname());
+        summary.setSpeakerLastname(presentation.getSpeaker().getLastname());
+
+        summary.setNumberOfAttendees(presentation.getAttendanceList().size());
+
+        int numberOfPositiveEvaluations = 0;
+        int numberOfNeutralEvaluations = 0;
+        int numberOfNegativeEvaluations = 0;
+
+        for (Attendance attendance : presentation.getAttendanceList()) {
+
+            if (attendance.containsEvaluation()) {
+
+                if (attendance.isPositiveEvaluation()) {
+                    numberOfPositiveEvaluations++;
+                } else if (attendance.isNegativeEvaluation()) {
+                    numberOfNegativeEvaluations++;
+                } else if (attendance.isNeutralEvaluation()) {
+                    numberOfNeutralEvaluations++;
+                } else {
+                    throw new ConferenceException("Unknown evaluation value: " + attendance.getEvaluation());
+                }
+            }
+        }
+
+        summary.setNumberOfPositiveEvaluations(numberOfPositiveEvaluations);
+        summary.setNumberOfNeutralEvaluations(numberOfNeutralEvaluations);
+        summary.setNumberOfNegativeEvaluations(numberOfNegativeEvaluations);
+
+        return summary;
     }
 }
