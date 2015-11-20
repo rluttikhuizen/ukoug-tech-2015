@@ -21,12 +21,15 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @NamedQueries({
               @NamedQuery(name = "Attendee.findAll", query = "select o from Attendee o"),
-              @NamedQuery(name = "Attendee.findById", query = "select o from Attendee o where o.id = :id")
+              @NamedQuery(name = "Attendee.findById", query = "select o from Attendee o where o.id = :id"),
+              @NamedQuery(name = "Attendee.findByUsername",
+                          query = "select o from Attendee o where o.username = :username")
     })
 @XmlType(propOrder = { "id", "name", "company", "username", "attendanceList" })
 public class Attendee implements Serializable {
 
     private static final long serialVersionUID = -3220046354811442185L;
+
     @Column(length = 200)
     private String company;
     @Id

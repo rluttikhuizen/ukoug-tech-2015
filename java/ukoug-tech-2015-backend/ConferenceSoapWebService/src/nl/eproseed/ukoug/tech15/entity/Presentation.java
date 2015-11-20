@@ -38,6 +38,7 @@ import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 public class Presentation implements Serializable {
 
     private static final long serialVersionUID = -3310009164475122261L;
+    
     @Column(name = "ABSTRACT")
     private String presentationAbstract;
     @Column(name = "CONTENT_LEVEL")

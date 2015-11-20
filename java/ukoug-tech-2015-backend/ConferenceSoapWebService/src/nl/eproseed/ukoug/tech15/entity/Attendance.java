@@ -8,11 +8,14 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,13 +25,19 @@ import javax.xml.bind.annotation.XmlType;
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Attendance.findAll", query = "select o from Attendance o") })
+@NamedQueries({
+              @NamedQuery(name = "Attendance.findAll", query = "select o from Attendance o"),
+              @NamedQuery(name = "Attendance.findById", query = "select o from Attendance o where o.id = :id"),
+    })
 @XmlType(propOrder = { "id", "attendee", "presentation", "status", "evaluation", "evaluationTimestamp" })
 public class Attendance implements Serializable {
 
     private static final long serialVersionUID = -2352820538098469942L;
+
     @Id
     @Column(nullable = false)
+    @SequenceGenerator(name = "attendanceSeq", sequenceName = "ATTENDANCE_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attendanceSeq")
     private BigDecimal id;
     @Column(length = 100)
     private String status;
@@ -53,7 +62,8 @@ public class Attendance implements Serializable {
     public Attendance() {
     }
 
-    public Attendance(Attendee attendee, BigDecimal id, Presentation presentation, String status, String evaluation, Date evaluationTimestamp) {
+    public Attendance(Attendee attendee, BigDecimal id, Presentation presentation, String status, String evaluation,
+                      Date evaluationTimestamp) {
 
         this.attendee = attendee;
         this.id = id;
