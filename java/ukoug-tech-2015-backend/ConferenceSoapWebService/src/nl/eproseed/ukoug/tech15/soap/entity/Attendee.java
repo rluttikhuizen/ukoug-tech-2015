@@ -1,4 +1,4 @@
-package nl.eproseed.ukoug.tech15.entity;
+package nl.eproseed.ukoug.tech15.soap.entity;
 
 import java.io.Serializable;
 

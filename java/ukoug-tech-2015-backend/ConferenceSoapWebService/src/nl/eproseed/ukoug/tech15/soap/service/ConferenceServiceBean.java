@@ -1,4 +1,4 @@
-package nl.eproseed.ukoug.tech15.service;
+package nl.eproseed.ukoug.tech15.soap.service;
 
 import java.math.BigDecimal;
 
@@ -19,16 +19,16 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import nl.eproseed.ukoug.tech15.exception.ConferenceException;
-import nl.eproseed.ukoug.tech15.entity.Attendance;
-import nl.eproseed.ukoug.tech15.entity.Attendee;
-import nl.eproseed.ukoug.tech15.entity.Presentation;
-import nl.eproseed.ukoug.tech15.entity.Speaker;
-import nl.eproseed.ukoug.tech15.enumeration.EvaluationEnum;
+import nl.eproseed.ukoug.tech15.soap.exception.ConferenceException;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
+import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
+import nl.eproseed.ukoug.tech15.soap.enumeration.EvaluationEnum;
 
 @Stateless(name = "ConferenceService", mappedName = "ConferenceService")
 @WebService(serviceName = "ConferenceSoapWebService", portName = "ConferenceSoapWebServicePort",
-            endpointInterface = "nl.eproseed.ukoug.tech15.service.ConferenceSoapWebService")
+            endpointInterface = "nl.eproseed.ukoug.tech15.soap.service.ConferenceSoapWebService")
 public class ConferenceServiceBean implements ConferenceService, ConferenceServiceLocal {
 
     @Resource

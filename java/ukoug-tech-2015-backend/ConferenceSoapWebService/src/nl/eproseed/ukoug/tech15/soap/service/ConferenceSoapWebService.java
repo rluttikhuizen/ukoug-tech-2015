@@ -1,4 +1,4 @@
-package nl.eproseed.ukoug.tech15.service;
+package nl.eproseed.ukoug.tech15.soap.service;
 
 import java.math.BigDecimal;
 
@@ -11,10 +11,10 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-import nl.eproseed.ukoug.tech15.entity.Attendance;
-import nl.eproseed.ukoug.tech15.entity.Attendee;
-import nl.eproseed.ukoug.tech15.entity.Presentation;
-import nl.eproseed.ukoug.tech15.entity.Speaker;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
+import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
 
 @WebService(name = "ConferenceSoapWebService", targetNamespace = "http://eproseed.nl/ukoug/tech15")
 public interface ConferenceSoapWebService extends Remote {

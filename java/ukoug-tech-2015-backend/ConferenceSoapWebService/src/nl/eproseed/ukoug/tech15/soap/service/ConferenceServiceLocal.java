@@ -1,19 +1,19 @@
-package nl.eproseed.ukoug.tech15.service;
+package nl.eproseed.ukoug.tech15.soap.service;
 
 import java.math.BigDecimal;
 
 import java.util.List;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
-import nl.eproseed.ukoug.tech15.entity.Attendance;
-import nl.eproseed.ukoug.tech15.entity.Attendee;
-import nl.eproseed.ukoug.tech15.entity.Presentation;
-import nl.eproseed.ukoug.tech15.entity.Speaker;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendance;
+import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
+import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
+import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
 
-@Remote
-public interface ConferenceService {
-
+@Local
+public interface ConferenceServiceLocal {
+  
     List<Speaker> getSpeakers();
     Speaker getSpeakerById(BigDecimal speakerId);
 

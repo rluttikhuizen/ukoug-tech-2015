@@ -1,4 +1,4 @@
-package nl.eproseed.ukoug.tech15.exception;
+package nl.eproseed.ukoug.tech15.soap.exception;
 
 
 public class ConferenceException extends RuntimeException {
