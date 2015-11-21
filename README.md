@@ -22,5 +22,15 @@ This code is meant for demo purposes only, and if used, should be treated accord
 ## Contents of this repo
 
 ### Database
-Contains a SQL script to create a database user "UKOUG_TECH_15" in an Oracle Database and create the necessary tables such as "ATTENDEE", "SPEAKER" and "ATTENDANCE". 
+Contains a SQL script to create a database user "UKOUG_TECH_15" in an Oracle Database and create the necessary sequences and tables: "ATTENDEE", "SPEAKER", "PRESENTATION" and "ATTENDANCE". The SQL script also populates the tables with public data provided by the UKOUG Tech 2015 conference (speakers and sessions). Fictitious data is used to create demo data for the attendees and attendances. 
+
+Note that while the speaker and session data is provided by UKOUG, it might be out-of-date. Use the UKOUG Tech 2015 conference site for up-to-date information about the conference.
+
+### Java
+Contains a backend application providing the necessary functionality for the Conference app. There are two variants available for this backend application. Both variants use JPA/EclipseLink as persistency layer.
+
+* SOAP Web Service
+* REST Service
+
+The SOAP Web Service backend is used to simulate an enterprise that wants to REST-enable its existing SOAP-based services. The REST Service is used to simulate a greenfield situation in which a RESTful service using JSON payloads is created right away.
 
