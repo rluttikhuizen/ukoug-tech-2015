@@ -34,3 +34,4 @@ Contains a backend application providing the necessary functionality for the Con
 
 The SOAP Web Service backend is used to simulate an enterprise that wants to REST-enable its existing SOAP-based services. The REST Service is used to simulate a greenfield situation in which a RESTful service using JSON payloads is created right away.
 
+The backend applications are deployed to WebLogic 12c, either JCS (PaaS) in the Oracle Cloud or using WebLogic 12c on-premise.
