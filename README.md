@@ -26,7 +26,7 @@ Contains a SQL script to create a database user "UKOUG_TECH_15" in an Oracle Dat
 
 Note that while the speaker and session data is provided by UKOUG, it might be out-of-date. Use the UKOUG Tech 2015 conference site for up-to-date information about the conference.
 
-### Java
+### Java back-end
 Contains a backend application providing the necessary functionality for the Conference app. There are two variants available for this backend application. Both variants use JPA/EclipseLink as persistency layer.
 
 * SOAP Web Service
@@ -35,3 +35,9 @@ Contains a backend application providing the necessary functionality for the Con
 The SOAP Web Service backend is used to simulate an enterprise that wants to REST-enable its existing SOAP-based services. The REST Service is used to simulate a greenfield situation in which a RESTful service using JSON payloads is created right away.
 
 The backend applications are deployed to WebLogic 12c, either JCS (PaaS) in the Oracle Cloud or using WebLogic 12c on-premise.
+
+* Workspace: UKOUG_Tech_2015
+* SOAP Web Service Project: ConferenceSoapWebService
+* SOAP Web Service Test: ConferenceSoapWebService-soapui-project.xml (soapUI project in "Test" folder)
+* REST Service Project: ConferenceRestService
+* Prerequisites: Create a JDBC Data Source with JNDI name jdbc/ukougTech15 (see SQL script in "Database" folder)
