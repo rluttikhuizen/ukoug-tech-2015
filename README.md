@@ -1,9 +1,10 @@
 # ukoug-tech-2015
 
 ## Introduction
-This repo contains the demo code for the Live Mobile and Cloud Hacking by ACEs session at UKOUG Tech 2015 Super Sunday. By making this demo code available you can execute (parts of the) Live Mobile and Cloud Hacking session yourself. You can find more info about this session on the [UKOUG Tech site] (http://www.supersunday15.ukoug.org/default.asp?p=14169&dlgact=shwprs&prs_prsid=11732&day_dayid=101). 
+This repo contains the demo code for the [Live Mobile and Cloud Hacking by ACEs session] (http://www.supersunday15.ukoug.org/default.asp?p=14169&dlgact=shwprs&prs_prsid=11732&day_dayid=101) at the UKOUG Tech 2015 conference. You can inspect, use and tweak the demo code yourself and deploy it to the Oracle Cloud to learn more about various Oracle technologies and products.
+
 ## Usecase
-This demo is centered around building and deploying a Conference app that can be used by a conference and conference attendees to create sessions, (re)schedule sessions, register for sessions by attendees, evaluate sessions, etc.
+In the Live Hacking session we will build and deploy a Conference app to the Oracle Cloud (JCS, MCS, and PCS). The app can be used by a conference and conference attendees to create sessions, (re)schedule sessions, register for sessions by attendees, evaluate sessions, etc.
 
 ## Video
 Watch a [video] (https://community.oracle.com/docs/DOC-984188) about this session.
