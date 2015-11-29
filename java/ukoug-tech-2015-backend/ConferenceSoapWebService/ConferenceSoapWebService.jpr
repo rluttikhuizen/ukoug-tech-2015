@@ -90,7 +90,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="EjbWebServices">
+         <hash n="ConferenceSoapWebService">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
             </hash>
@@ -125,19 +125,19 @@
             <value n="platformType" v="WEBLOGIC"/>
             <value n="platformVersion" v="12.0.0.0"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.ejb.EjbProfile"/>
-            <value n="profileName" v="EjbWebServices"/>
+            <value n="profileName" v="ConferenceSoapWebService"/>
             <hash n="properties">
                <value n="" v=""/>
             </hash>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="EjbWebServices"/>
+         <string v="ConferenceSoapWebService"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="UKOUG_Tech_2015-ConferenceSoapWebService-webapp"/>
-      <value n="j2eeWebContextRoot" v="UKOUG_Tech_2015-ConferenceSoapWebService-context-root"/>
+      <value n="j2eeWebAppName" v="ConferenceSoapWebService"/>
+      <value n="j2eeWebContextRoot" v="ConferenceSoapWebService"/>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">

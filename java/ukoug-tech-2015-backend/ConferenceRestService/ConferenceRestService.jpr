@@ -73,6 +73,7 @@
       <list n="serviceFacadeUrls">
          <url path="src/nl/eproseed/ukoug/tech15/service/ConferenceServiceFacade.java"/>
       </list>
+      <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
@@ -81,6 +82,8 @@
          <string v="Java"/>
          <string v="RESTWebServices"/>
          <string v="TopLink"/>
+         <string v="WSDL"/>
+         <string v="WSPolicy"/>
          <string v="XML"/>
       </list>
    </hash>
