@@ -27,10 +27,8 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
-      <hash><url n="URL" path="ConferenceRestService/ConferenceRestService.jpr"/></hash>
       <hash><url n="URL" path="ConferenceSoapWebService/ConferenceSoapWebService.jpr"/></hash>
       <hash><url n="URL" path="ConferenceTopLinkRestService/ConferenceTopLinkRestService.jpr"/></hash>
-      <hash><url n="URL" path="WsTest/WsTest.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
