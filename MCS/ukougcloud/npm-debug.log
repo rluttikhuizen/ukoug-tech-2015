@@ -1,0 +1,75 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.12.7
+4 warn package.json ukougcloud@1.0.0 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/Users/sdavelaar/ukoug-cloud-hacking/MCS/ukougcloud',
+6 verbose install   [ 'asynch' ] ]
+7 info preinstall ukougcloud@1.0.0
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'asynch@*', null ]
+10 verbose cache add name=undefined spec="asynch@*" args=["asynch@*",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'asynch@*',
+11 verbose parsed url   path: 'asynch@*',
+11 verbose parsed url   href: 'asynch@*' }
+12 verbose cache add name="asynch" spec="*" args=["asynch","*"]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: '*',
+13 verbose parsed url   path: '*',
+13 verbose parsed url   href: '*' }
+14 verbose addNamed [ 'asynch', '*' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile aa527680-asynch asynch@*
+17 verbose lock asynch@* /Users/sdavelaar/.npm/aa527680-asynch.lock
+18 silly addNameRange { name: 'asynch', range: '*', hasData: false }
+19 verbose request where is /asynch
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id e12bdf88e0720729
+22 verbose url raw /asynch
+23 verbose url resolving [ 'https://registry.npmjs.org/', './asynch' ]
+24 verbose url resolved https://registry.npmjs.org/asynch
+25 verbose request where is https://registry.npmjs.org/asynch
+26 info trying registry request attempt 1 at 8:22:42 AM
+27 http GET https://registry.npmjs.org/asynch
+28 info retry will retry, error on last attempt: Error: connect ETIMEDOUT
+29 info trying registry request attempt 2 at 8:24:08 AM
+30 http GET https://registry.npmjs.org/asynch
+31 info retry will retry, error on last attempt: Error: connect ETIMEDOUT
+32 info trying registry request attempt 3 at 8:26:23 AM
+33 http GET https://registry.npmjs.org/asynch
+34 silly lockFile aa527680-asynch asynch@*
+35 silly lockFile aa527680-asynch asynch@*
+36 error network connect ETIMEDOUT
+36 error network This is most likely not a problem with npm itself
+36 error network and is related to network connectivity.
+36 error network In most cases you are behind a proxy or have bad network settings.
+36 error network
+36 error network If you are behind a proxy, please make sure that the
+36 error network 'proxy' config is set properly.  See: 'npm help config'
+37 error System Darwin 14.0.0
+38 error command "node" "/usr/local/bin/npm" "install"
+39 error cwd /Users/sdavelaar/ukoug-cloud-hacking/MCS/ukougcloud
+40 error node -v v0.12.7
+41 error npm -v 1.4.28
+42 error syscall connect
+43 error code ETIMEDOUT
+44 error errno ETIMEDOUT
+45 verbose exit [ 1, true ]
