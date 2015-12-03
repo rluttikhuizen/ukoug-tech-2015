@@ -24,6 +24,7 @@ import nl.eproseed.ukoug.tech15.soap.entity.Attendee;
 import nl.eproseed.ukoug.tech15.soap.entity.EvaluationSummary;
 import nl.eproseed.ukoug.tech15.soap.entity.Presentation;
 import nl.eproseed.ukoug.tech15.soap.entity.Speaker;
+import nl.eproseed.ukoug.tech15.soap.enumeration.AttendanceEnum;
 import nl.eproseed.ukoug.tech15.soap.enumeration.EvaluationEnum;
 import nl.eproseed.ukoug.tech15.soap.exception.ConferenceException;
 
@@ -239,11 +240,6 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
         // Persist attendance
         attendance = persistEntity(attendance);
 
-        // Nulling detail information that is unnecessary for this operation. Better approach would be to have
-        // separate entities to return in Web Service instead of using JPA entities directly
-        attendance.getAttendee().setAttendanceList(null);
-        attendance.getPresentation().setAttendanceList(null);
-
         return attendance;
     }
 
@@ -258,7 +254,7 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
         Attendance attendance = getAttendanceById(attendanceId);
 
         if (status != null) {
-            attendance.setStatus(status);
+            attendance.setStatus(AttendanceEnum.valueOf(status).name());
         }
 
         if (evaluation != null) {
@@ -268,11 +264,6 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
 
         // Update attendance
         attendance = mergeEntity(attendance);
-
-        // Nulling detail information that is unnecessary for this operation. Better approach would be to have
-        // separate entities to return in Web Service instead of using JPA entities directly
-        attendance.getAttendee().setAttendanceList(null);
-        attendance.getPresentation().setAttendanceList(null);
 
         return attendance;
     }
@@ -337,5 +328,46 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
         summary.setNumberOfNegativeEvaluations(numberOfNegativeEvaluations);
 
         return summary;
+    }
+
+    @Override
+    public Presentation reschedulePresentation(BigDecimal presentationId, String day, Date sessionDate,
+                                               String startTime, String endTime, BigDecimal length, String hall) {
+
+        // Verify presentation id
+        if (presentationId == null) {
+            throw new ConferenceException("Presentation id cannot be null");
+        }
+
+        Presentation presentation = getPresentationById(presentationId);
+
+        if (day != null) {
+            presentation.setDay(day);
+        }
+
+        if (sessionDate != null) {
+            presentation.setSessionDate(sessionDate);
+        }
+
+        if (startTime != null) {
+            presentation.setStartTime(startTime);
+        }
+
+        if (endTime != null) {
+            presentation.setEndTime(endTime);
+        }
+
+        if (length != null) {
+            presentation.setLength(length);
+        }
+
+        if (hall != null) {
+            presentation.setHall(hall);
+        }
+
+        // Update attendance
+        presentation = mergeEntity(presentation);
+
+        return presentation;
     }
 }

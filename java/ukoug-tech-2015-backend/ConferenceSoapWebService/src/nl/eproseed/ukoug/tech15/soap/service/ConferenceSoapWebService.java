@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import java.rmi.Remote;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -35,6 +36,16 @@ public interface ConferenceSoapWebService extends Remote {
     @WebMethod
     @WebResult(name = "presentation")
     public Presentation getPresentationById(@WebParam(name = "presentationId") BigDecimal presentationId);
+
+    @WebMethod
+    @WebResult(name = "presentation")
+    Presentation reschedulePresentation(@WebParam(name = "presentationId") BigDecimal presentationId,
+                                        @WebParam(name = "day") String day,
+                                        @WebParam(name = "sessionDate") Date sessionDate,
+                                        @WebParam(name = "startTime") String startTime,
+                                        @WebParam(name = "endTime") String endTime,
+                                        @WebParam(name = "length") BigDecimal length,
+                                        @WebParam(name = "hall") String hall);
 
     @WebMethod
     @WebResult(name = "attendees")

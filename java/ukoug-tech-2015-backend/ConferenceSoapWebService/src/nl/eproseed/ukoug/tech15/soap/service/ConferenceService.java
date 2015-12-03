@@ -2,6 +2,7 @@ package nl.eproseed.ukoug.tech15.soap.service;
 
 import java.math.BigDecimal;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -24,7 +25,8 @@ public interface ConferenceService {
     
     List<Presentation> getPresentations();
     Presentation getPresentationById(BigDecimal presentationId);
-    
+    Presentation reschedulePresentation(BigDecimal presentationId, String day, Date sessionDate, String startTime, String endTime, BigDecimal length, String hall);
+        
     Attendance getAttendanceById(BigDecimal attendanceId);
     Attendance createAttendance(BigDecimal attendeeId, BigDecimal presentationId);
     Attendance updateAttendance(BigDecimal attendanceId, String status, String evaluation);
