@@ -1,0 +1,15 @@
+{
+  "name" : "ukougcloud",
+  "version" : "1.0.0",
+  "description" : "UKOUG Live Cloud Hacking",
+  "main" : "ukougcloud.js",
+  "dependencies" : {
+                  "asynch" : "*"
+  },
+  "oracleMobile" : {
+    "dependencies" : {
+      "apis" : { },
+      "connectors" : {"/mobile/connector/ukougdemo": "1.0" }
+    }
+  }
+}
