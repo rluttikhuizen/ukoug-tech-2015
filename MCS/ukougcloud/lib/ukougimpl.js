@@ -132,14 +132,21 @@ var getSessionInfo = function (body, agg, sdk, callback) {
             var json = JSON.parse(body);
             console.info("SOAP body" + body);
             agg.session = json.Body.getPresentationByIdResponse.presentation;
-            agg.session.attendance.forEach(function (attendance) {
+            
+            agg.session.abstract = agg.session.presentationAbstract;
+            delete agg.session.presentationAbstract;
+            if (agg.session.attendance) {
+             agg.session.attendance.forEach(function (attendance) {
                 attendance.attendeeId = attendance.attendee.id;
                 attendance.name = attendance.attendee.name;
                 attendance.username = attendance.attendee.username;
                 attendance.company = attendance.attendee.company;
                 delete attendance['attendee'];
-
-            });
+              }); 
+                // rename attendance to attendances
+                agg.session.attendances = agg.session.attendance;
+                delete agg.session['attendance'];                
+            }
             responseMessage = JSON.stringify(agg.session);
             callback(null, responseMessage);
         } else {
@@ -195,6 +202,59 @@ function removeNullAttrs(obj) {
         }
     }
 }
+
+exports.createAttendance = function (req, res) {
+    var handler = function (error, response, body) {
+        var responseMessage = body;
+        if (error) {
+            responseMessage = error.message;
+        } else if (parseInt(response.statusCode) === 200) {
+            var json = JSON.parse(body);
+            responseMessage = JSON.stringify(body);
+        }
+        res.status(response.statusCode).send(responseMessage);
+        res.end();
+    };
+      console.info("POST BODY: "+JSON.stringify(req.body));
+    var sessionId = req.body.sessionId;
+    var attendeeId = req.body.attendeeId;
+    var optionsList = {uri: '/mobile/connector/ukougdemo/createAttendance'};
+    optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
+    var outgoingMessage = {Header: null, Body: {"createAttendance": {
+         "attendeeId": attendeeId,
+         "presentationId": sessionId 
+      }}};
+      console.info("POST ATT: "+JSON.stringify(outgoingMessage));
+    optionsList.body = JSON.stringify(outgoingMessage);
+    req.oracleMobile.rest.post(optionsList, handler);
+};
+
+exports.updateAttendance = function (req, res) {
+    var handler = function (error, response, body) {
+        var responseMessage = body;
+        if (error) {
+            responseMessage = error.message;
+        } else if (parseInt(response.statusCode) === 200) {
+            var json = JSON.parse(body);
+            responseMessage = JSON.stringify(body);
+        }
+        res.status(response.statusCode).send(responseMessage);
+        res.end();
+    };
+      console.info("PUT BODY: "+JSON.stringify(req.body));
+// Evaluation --> POSITIVE, NEUTRAL, NEGATIVE
+// Attendance status --> REGISTERED, REGISTERED_ATTENDED, NOT_REGISTERED_ATTENDED, UNREGISTERED      
+    var optionsList = {uri: '/mobile/connector/ukougdemo/updateAttendance'};
+    optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
+    var outgoingMessage = {Header: null, Body: {"updateAttendance": {
+         "attendanceId": req.body.id,
+         "status": req.body.present ? 'REGISTERED_ATTENDED' : 'REGISTERED', 
+         "evaluation": req.body.rating 
+      }}};
+      console.info("PUT ATT: "+JSON.stringify(outgoingMessage));
+    optionsList.body = JSON.stringify(outgoingMessage);
+    req.oracleMobile.rest.post(optionsList, handler);
+};
 
 // async modules expect functions in the format of function(callback); 
 // This functions wraps the function to have ths format

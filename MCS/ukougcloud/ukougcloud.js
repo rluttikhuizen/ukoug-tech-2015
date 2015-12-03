@@ -9,13 +9,11 @@ module.exports = function(service) {
 
 
 	service.post('/mobile/custom/ukougcloud/attendance', function(req,res) {
-		var result = {};
-		res.send(201, result);
+		uk.createAttendance(req,res);
 	});
 
 	service.put('/mobile/custom/ukougcloud/attendance', function(req,res) {
-		var result = {};
-		res.send(200, result);
+		uk.updateAttendance(req,res);
 	});
 
 	service.get('/mobile/custom/ukougcloud/sessions/:id', function(req,res) {

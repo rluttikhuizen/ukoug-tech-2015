@@ -1,6 +1,6 @@
 exports.speakersSummarySOAP2REST = function (speaker) {
     removeNullAttrs(speaker);
-    var speakerRest = {id: speaker.id, firstname: speaker.firstName, lastname: speaker.lastName, company: speaker.company, bio: speaker.speakerBio};
+    var speakerRest = {id: speaker.id, firstname: speaker.firstname, lastname: speaker.lastname, company: speaker.company, bio: speaker.speakerBio};
     return speakerRest;
 };
 
