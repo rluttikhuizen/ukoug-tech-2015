@@ -20,7 +20,7 @@
       <XmlRefAddr addrType="MCS">
         <Contents>
           <restconnection name="MCS"
-                          url="https://mobileportalsetrial0004dev-mcsdem0004.mobileenv.us2.oraclecloud.com:443"/>
+                          url="https://mobileportalsetrial0004dev-mcsdem0004.mobileenv.us2.oraclecloud.com:443/mobile"/>
         </Contents>
       </XmlRefAddr>
     </RefAddresses>

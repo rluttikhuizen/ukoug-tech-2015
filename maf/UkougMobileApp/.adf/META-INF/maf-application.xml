@@ -2,7 +2,7 @@
 <adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
                    version="1.0" name="UkougMobileApp" id="com.company.UkougMobileApp"
                    appControllerFolder="ApplicationController"
-                   listener-class="oracle.ateam.sample.mobile.lifecycle.InitDBLifeCycleListener">
+                   listener-class="com.blogspot.lucbors.uma.application.LifeCycleListenerImpl">
   <adfmf:featureReference refId="Sessions" id="fr1"/>
   <adfmf:featureReference refId="oracle.ateam.sample.mobile.datasynch" id="oracle.ateam.sample.mobile.datasynch"
                           showOnNavigationBar="false" showOnSpringboard="false"/>

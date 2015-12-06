@@ -31,6 +31,9 @@
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
          <hash n="Android1">
+            <hash n="android_options">
+               <value n="android_deploy_debug_mode" v="false"/>
+            </hash>
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
             </hash>
