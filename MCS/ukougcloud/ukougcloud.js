@@ -20,7 +20,11 @@ module.exports = function(service) {
 		uk.getSessionById(req,res);
 	});
 
-	service.get('/mobile/custom/ukougcloud/speakers', function(req,res) {
+	service.put('/mobile/custom/ukougcloud/sessions/:id', function(req,res) {
+		uk.rescheduleSession(req,res);
+	});
+
+        service.get('/mobile/custom/ukougcloud/speakers', function(req,res) {
             uk.getSpeakers(req,res);
 	});
 
