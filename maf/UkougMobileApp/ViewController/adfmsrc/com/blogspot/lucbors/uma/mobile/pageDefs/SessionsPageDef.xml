@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SessionsPageDef"
+                Package="com.blogspot.lucbors.uma.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="SessionsServiceIterator" Binds="root" DataControl="SessionsService" RangeSize="25"/>
+    <accessorIterator id="sessionsIterator" MasterBinding="SessionsServiceIterator" Binds="sessions"
+                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Sessions" DataControl="SessionsService"
+                      RangeSize="25"/>
+    <accessorIterator id="attendancesIterator" MasterBinding="sessionsIterator" Binds="attendances"
+                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendances" DataControl="SessionsService"
+                      RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues id="hasSessionsDataSynchActions" IterBinding="SessionsServiceIterator">
+      <AttrNames>
+        <Item Value="hasSessionsDataSynchActions"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="isNewEntity" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="isNewEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveSessions" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveSessions"
+                  DataControl="SessionsService" InstanceName="data.SessionsService.dataProvider"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="entity" NDValue="#{bindings.sessionsIterator.currentRow.dataProvider}"
+                 NDType="com.blogspot.lucbors.uma.mobile.model.Sessions"/>
+    </methodAction>
+    <attributeValues id="id" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="abstract1" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="abstract1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="contentLevel" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="contentLevel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="day" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="day"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="endTime" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="endTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="experience" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="experience"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="hall" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="hall"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="length" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="length"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="preferredLength" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="preferredLength"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="presentationFormat" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="presentationFormat"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="presentationStatus" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="presentationStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="sessionDate" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="sessionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="startTime" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="startTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="stream" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="stream"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="title" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="title"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="topic" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="topic"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="track" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="track"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="speakerId" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="speakerId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="speakerName" IterBinding="sessionsIterator">
+      <AttrNames>
+        <Item Value="speakerName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="attendances" IterBinding="attendancesIterator">
+      <nodeDefinition Name="attendances0" DefName="com.blogspot.lucbors.uma.mobile.model.Attendances">
+        <AttrNames>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="DeleteSessions" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="sessionsIterator"/>
+    <action id="CreateAttendances" RequiresUpdateModel="true" Action="createRow" IterBinding="attendancesIterator"/>
+    <methodAction id="synchronizeSessions" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="synchronizeSessions" DataControl="SessionsService"
+                  InstanceName="data.SessionsService.dataProvider" IsViewObjectMethod="false">
+      <NamedData NDName="inBackground" NDValue="true" NDType="java.lang.Boolean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

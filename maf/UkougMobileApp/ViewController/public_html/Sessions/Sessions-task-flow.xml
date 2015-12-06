@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="Sessions-task-flow">
+    <default-activity>checkLogin</default-activity>
+    <managed-bean id="__14">
+      <managed-bean-name>sessionsBean</managed-bean-name>
+      <managed-bean-class>com.blogspot.lucbors.uma.mobile.beans.SessionsBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="SessionsList">
+      <page>/Sessions/SessionsList.amx</page>
+    </view>
+    <view id="Sessions">
+      <page>/Sessions/Sessions.amx</page>
+    </view>
+    <view id="Attendances">
+      <page>/Sessions/Attendances.amx</page>
+    </view>
+    <view id="Attendance">
+      <page>/Attendance/Attendance.amx</page>
+    </view>
+    <router id="checkLogin">
+      <case id="__13">
+        <expression>#{applicationScope.userName==null}</expression>
+        <outcome>Login</outcome>
+      </case>
+      <case id="__13a">
+        <expression>#{applicationScope.userName!=null}</expression>
+        <outcome>Continue</outcome>
+      </case>
+      <default-outcome>Continue</default-outcome>
+    </router>
+    <view id="LoginScreen">
+      <page>/General/LoginScreen.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>SessionsList</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Sessions</from-outcome>
+        <to-activity-id>Sessions</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>Sessions</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>Attendances</from-outcome>
+        <to-activity-id>Attendances</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>RateSession</from-outcome>
+        <to-activity-id>Attendance</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>Sessions</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>newAttendances</from-outcome>
+        <to-activity-id>Attendances</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>checkLogin</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>Continue</from-outcome>
+        <to-activity-id>SessionsList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>Login</from-outcome>
+        <to-activity-id>LoginScreen</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>LoginScreen</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>GoSessionList</from-outcome>
+        <to-activity-id>SessionsList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-mobile-config>

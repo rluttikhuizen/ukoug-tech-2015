@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="Sessions" name="Sessions" icon="images/feat-sessions.png" image="images/feat-sessions.png">
+    <adfmf:content id="Sessions.1">
+      <adfmf:amx file="Sessions/Sessions-task-flow.xml#Sessions-task-flow">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/myBeacon.js" id="i1"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="Speakers" name="Speakers" icon="images/feat-speakers.png" image="images/feat-speakers.png">
+    <adfmf:content id="Speakers.1">
+      <adfmf:amx file="Speakers/Speakers-task-flow.xml#Speakers-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

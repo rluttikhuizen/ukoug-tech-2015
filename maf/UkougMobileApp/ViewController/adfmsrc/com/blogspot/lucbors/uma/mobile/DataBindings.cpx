@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.1" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.blogspot.lucbors.uma.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/Sessions/SessionsList.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsListPageDef"/>
+    <page path="/Sessions/Sessions.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsPageDef"/>
+    <page path="/Sessions/Attendances.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_AttendancesPageDef"/>
+    <page path="/Speakers/SpeakersList.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersListPageDef"/>
+    <page path="/Speakers/Speakers.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersPageDef"/>
+    <page path="/Attendance/Attendance.amx" usageId="com_blogspot_lucbors_uma_mobile_AttendancePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsListPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.SessionsListPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.SessionsPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_AttendancesPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.AttendancesPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersListPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.SpeakersListPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.SpeakersPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_AttendancePageDef" path="Attendance.AttendancePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="SpeakersService" path="com.blogspot.lucbors.uma.mobile.SpeakersService"/>
+    <dc id="AttendancesService" path="com.blogspot.lucbors.uma.mobile.AttendancesService"/>
+    <dc id="AttendanceService" path="com.blogspot.lucbors.uma.mobile.AttendanceService"/>
+    <dc id="ApplicationFeatures" path="com.blogspot.lucbors.uma.application.ApplicationFeatures"/>
+    <dc id="DeviceFeatures" path="com.blogspot.lucbors.uma.application.DeviceFeatures"/>
+    <dc id="SessionsService" path="com.blogspot.lucbors.uma.mobile.SessionsService"/>
+  </dataControlUsages>
+</Application>

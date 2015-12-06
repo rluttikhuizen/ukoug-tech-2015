@@ -1,0 +1,219 @@
+#%RAML 0.8
+title: ukoug
+version: 1.0
+baseUri: /mobile/custom/ukougcloud
+protocols: [HTTPS]
+/speakers:
+  get:
+    protocols: [HTTPS]
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{
+              	"company": "Raastech",
+              	"firstname": "Ahmed",
+              	"id": 1,
+              	"lastname": "Aboulnaga",
+              	"bio": "Ahmed Aboulnaga is an Oracle ACE whose professional focus is in technical management, architecture, and consulting within the Oracle Fusion Middleware stack. Ahmed has implemented enterprise solutions for commercial, government, and international customers throughout the years leveraging technologies such as WebLogic Server, SOA Suite, OSB, B2B, WebCenter, OEM, Exalogic, and more. Ahmed is an OCE and OCA and has presented at OpenWorld, Collaborate, UKOUG, GLOC, DOAG, and various Oracle users groups in the past. Ahmed has multiple publications in the area of Oracle Fusion Middleware and is currently president of the West Michigan Oracle Users Group (WMOUG)."
+              }, {
+              	"company": "eProseed",
+              	"firstname": "Bruno",
+              	"id": 2,
+              	"lastname": "Alves",
+              	"bio": "Bruno has worked with Oracle Fusion Middleware technologies for the last 10 years. He holds several Oracle certifications and is experienced as SOA/BPM Senior Architect, Consultant, Technical Team Leader and Presales. Currently performing the role of managing partner and Technical Director at eProseed UK, Bruno is co-author of the Oracle Fusion BPM &amp; SOA Blog, speaker on conferences, and publisher on Oracle Technology Network (OTN) and other SOA related publications. By being at eProseed since it’s early days, Bruno, together with the team at eProseed, have received 9 Oracle Awards the last 5 years, amongst which multiple times the Oracle Middleware Partner of the Year, Industry Partner of the Year, and Oracle Fusion Middleware Global Innovation.”"
+              }, {
+              	"company": "Oracle",
+              	"firstname": "Vikas",
+              	"id": 3,
+              	"lastname": "Anand",
+              	"bio": "Vikas Anand is Senior Director, Integration Products at Oracle. He leads overall product management & strategy for Oracle SOA Suite and Integration Cloud Service. Mr. Anand leads a team of seasoned Product Managers in charge of Oracle Fusion Middleware integration products:Integration Cloud Service, SOA Suite, BPEL, Service Bus, B2B, Stream Explorer, MFT, API Management, Oracle SOA Suite for Healthcare, Adapters for Cloud and Applications integration etc. Since joining Oracle in 2003, Mr. Anand has held various positions in product development, product management and strategy positions in different geographies. Prior to Oracle, Mr. Anand has worked in product & project development, and IT in Fortune 100 firms. In these roles he worked across diverse domains like Supply Chain Integration, Sales & Marketing Automation, Global Marketplaces & Industry verticals.  He also developed software products as a part of a startup. Mr. Anand holds a bachelor's degree in Computer Science &amp; Engineering."
+              }]
+
+/sessions:
+  get:
+    protocols: [HTTPS]
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{
+              	"abstract": "You already have to think about data modeling, security, application logic, performance, deployment, etc, etc. What if I told you that didn't have to worry about UI? Universal Theme, introduced in APEX 5, enables developers to build modern, beautiful, responsive applications that can be deeply customized. All without requiring you to become an expert in HTML, CSS or Javascript. This session will provide an in-depth look at the many features of Universal Theme, as well as what's planned for APEX 5.1. With APEX 5 and Universal Theme, you may have 99 problems, but your theme ain't one.",
+              	"contentLevel": 3,
+              	"day": "Monday 7th December 2015",
+              	"endTime": "09:50:00",
+              	"experience": "All Experience Levels",
+              	"hall": "Hall 6A",
+              	"id": 1,
+              	"length": 50,
+              	"preferredLength": "50 Minutes",
+              	"presentationFormat": "Live Demo",
+              	"presentationStatus": "Activated",
+              	"sessionDate": "2015-12-07T00:00:00Z",
+              	"startTime": "09:00:00",
+              	"stream": "APEX & Database Development",
+              	"title": "99 Problems but a Theme Ain't One",
+              	"topic": "APEX",
+              	"track": "APEX & Database Development",
+              	"speakerId": 114,
+              	"speakerName": "Shakeeb Rahman"
+              }, {
+              	"abstract": "An introduction to RAC (12c)    RAC is regarded as a commodity, but so many organizations implement it incorrectly.    This talk goes trough the basics of what you need to know about RAC on Oracle (12c):    - What is RAC for, exactly?  - Understanding the archtecture  - ASM basics  - Understanding services and GDS  - How the Scan listener works  - Fast Connect Failover  - Memory;   - What apps do wrong  - What happens when a node crashes  - Troubleshooting",
+              	"contentLevel": 4,
+              	"day": "Monday 7th December 2015",
+              	"endTime": "09:50:00",
+              	"experience": "Beginner/Exploratory",
+              	"hall": "Hall 11A",
+              	"id": 2,
+              	"length": 50,
+              	"preferredLength": "50 Minutes",
+              	"presentationFormat": "Traditional Presentation",
+              	"presentationStatus": "Activated",
+              	"sessionDate": "2015-12-07T00:00:00Z",
+              	"startTime": "09:00:00",
+              	"stream": "Database",
+              	"title": "An Introduction to RAC (12c)",
+              	"topic": "High Availability and Replication",
+              	"track": "Database 3",
+              	"speakerId": 28,
+              	"speakerName": "Neil Chandler"
+              }, {
+              	"abstract": "Mobile applications increasingly use Application Programming interfaces (APIs) in addition to enterprise systems of record in their development. The importance of an API economy is growing by the day. As the number of APIs produced and consumed by enterprises increases, the management and visibility of these APIs becomes increasingly important. Oracle API Catalog, Manager & Gateway allow organizations to easily secure and manage their APIs, providing visibility and control to the enterprise and a social catalog to API consumers for application development. In this session we deep-dive into the (abstract) scenario that took place at the dutch department of justice to increase visibility & security on their APIs.",
+              	"coPresenter": "Simone Geib - Oracle",
+              	"coPresenterEmail": "simone.geib@oracle.com",
+              	"contentLevel": 3,
+              	"day": "Monday 7th December 2015",
+              	"endTime": "09:50:00",
+              	"experience": "Beginner/Exploratory",
+              	"hall": "Hall 10A",
+              	"id": 3,
+              	"length": 50,
+              	"preferredLength": "50 Minutes",
+              	"presentationFormat": "Traditional Presentation",
+              	"presentationStatus": "Activated",
+              	"sessionDate": "2015-12-07T00:00:00Z",
+              	"startTime": "09:00:00",
+              	"stream": "Integration & Collaboration",
+              	"title": "API Management: Provide Security & Visibility to APIs",
+              	"topic": "Integration",
+              	"track": "Integration & Collaboration",
+              	"speakerId": 137,
+              	"speakerName": "Robert van Mölken"
+              }]
+
+  /{id}:
+    uriParameters:
+      id:
+        displayName: id
+        type: string
+        required: true
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                	"abstract": "You already have to think about data modeling, security, application logic, performance, deployment, etc, etc. What if I told you that didn't have to worry about UI? Universal Theme, introduced in APEX 5, enables developers to build modern, beautiful, responsive applications that can be deeply customized. All without requiring you to become an expert in HTML, CSS or Javascript. This session will provide an in-depth look at the many features of Universal Theme, as well as what's planned for APEX 5.1. With APEX 5 and Universal Theme, you may have 99 problems, but your theme ain't one.",
+                	"contentLevel": 3,
+                	"day": "Monday 7th December 2015",
+                	"endTime": "09:50:00",
+                	"experience": "All Experience Levels",
+                	"hall": "Hall 6A",
+                	"id": 1,
+                	"length": 50,
+                	"preferredLength": "50 Minutes",
+                	"presentationFormat": "Live Demo",
+                	"presentationStatus": "Activated",
+                	"sessionDate": "2015-12-07T00:00:00Z",
+                	"startTime": "09:00:00",
+                	"stream": "APEX & Database Development",
+                	"title": "99 Problems but a Theme Ain't One",
+                	"topic": "APEX",
+                	"track": "APEX & Database Development",
+                    "speakerId": 114,
+                    "speakerName": "Shakeeb Rahman",
+                	"attendances": [{
+                		"id": 194,
+                		"status": "REGISTERED",
+                		"attendeeId": 395,
+                    "sessionId": 1,
+                		"name": "Jai Courtney",
+                		"username": "jai.courtney",
+                		"company": "Oceanic Airlines ",
+                		"present": true,
+                		"rating": "excellent"
+                	}, {
+                		"id": 945,
+                		"status": "REGISTERED",
+                		"attendeeId": 342,
+                    "sessionId": 1,
+                		"name": "Guy Pearce",
+                		"username": "guy.pearce",
+                		"company": "Oscorp",
+                		"present": false,
+                		"rating": "good"
+                	}]
+                }
+
+/attendance:
+  post:
+    protocols: [HTTPS]
+    body:
+      application/json:
+        example: |
+          {
+          	"sessionId": 123,
+          	"status": "REGISTERED",
+          	"attendeeId": 395,
+              "present" : true
+          }
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+              	"id": 194,
+              	"sessionId": 123,
+              	"status": "REGISTERED",
+              	"attendeeId": 395,
+              	"name": "Jai Courtney",
+              	"username": "jai.courtney",
+              	"company": "Oceanic Airlines ",
+              	"present": true
+              }
+
+  put:
+    protocols: [HTTPS]
+    body:
+      application/json:
+        example: |
+          {
+              "id": 194,
+          	"sessionId": 123,
+          	"status": "REGISTERED",
+          	"attendeeId": 395,
+              "present" : true,
+              "rating": "excellent"
+          }
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+              "id": 194,
+              "sessionId": 123,
+              "status": "REGISTERED",
+              "attendeeId": 395,
+              "name": "Jai Courtney",
+              "username": "jai.courtney",
+              "company": "Oceanic Airlines ",
+              "present": true,
+              "rating": "excellent"
+              }

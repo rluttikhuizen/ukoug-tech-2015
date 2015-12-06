@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SpeakersPageDef"
+                Package="com.blogspot.lucbors.uma.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="SpeakersServiceIterator" Binds="root" DataControl="SpeakersService" RangeSize="25"/>
+    <accessorIterator id="speakersIterator" MasterBinding="SpeakersServiceIterator" Binds="speakers"
+                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Speakers" DataControl="SpeakersService"
+                      RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues id="hasSpeakersDataSynchActions" IterBinding="SpeakersServiceIterator">
+      <AttrNames>
+        <Item Value="hasSpeakersDataSynchActions"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="isNewEntity" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="isNewEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveSpeakers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveSpeakers"
+                  DataControl="SpeakersService" InstanceName="data.SpeakersService.dataProvider"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="entity" NDValue="#{bindings.speakersIterator.currentRow.dataProvider}"
+                 NDType="com.blogspot.lucbors.uma.mobile.model.Speakers"/>
+    </methodAction>
+    <attributeValues id="id" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="company" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="company"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="firstname" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="firstname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="lastname" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="lastname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="bio" IterBinding="speakersIterator">
+      <AttrNames>
+        <Item Value="bio"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="DeleteSpeakers" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="speakersIterator"/>
+    <methodAction id="synchronizeSpeakers" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="synchronizeSpeakers" DataControl="SpeakersService"
+                  InstanceName="data.SpeakersService.dataProvider" IsViewObjectMethod="false">
+      <NamedData NDName="inBackground" NDValue="true" NDType="java.lang.Boolean"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

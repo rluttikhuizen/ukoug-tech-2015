@@ -1,0 +1,28 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="UkougRestConn" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="UkougRestConn">
+        <Contents>
+          <restconnection name="UkougRestConn"
+                          url="https://mobileportalsetrial0004dev-mcsdem0004.mobileenv.us2.oraclecloud.com:443/mobile/custom/ukougcloud"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="PC" className="oracle.adf.model.connection.rest.RestConnection" partial="true"
+             manageInOracleEnterpriseManager="true" deployable="true" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+  </Reference>
+  <Reference name="MCS" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="MCS">
+        <Contents>
+          <restconnection name="MCS"
+                          url="https://mobileportalsetrial0004dev-mcsdem0004.mobileenv.us2.oraclecloud.com:443"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+</References>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="AttendancePageDef"
+                Package="Attendance">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AttendanceService" id="AttendanceServiceIterator"/>
+    <accessorIterator MasterBinding="AttendanceServiceIterator" Binds="attendance" RangeSize="25"
+                      DataControl="AttendanceService" BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendance"
+                      id="attendanceIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="attendanceIterator" id="attendeeId">
+      <AttrNames>
+        <Item Value="attendeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="present">
+      <AttrNames>
+        <Item Value="present"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="status">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="sessionId">
+      <AttrNames>
+        <Item Value="sessionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="rating">
+      <AttrNames>
+        <Item Value="rating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="attendanceIterator" id="isNewEntity">
+      <AttrNames>
+        <Item Value="isNewEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveAttendance" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveAttendance"
+                  IsViewObjectMethod="false" DataControl="AttendanceService"
+                  InstanceName="data.AttendanceService.dataProvider">
+            <NamedData NDName="entity" NDValue="#{bindings.attendanceIterator.currentRow.dataProvider}"
+                 NDType="com.blogspot.lucbors.uma.mobile.model.Attendance"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

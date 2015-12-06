@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:commandLink text="Sessions Details" id="ot1">
+                <amx:showPopupBehavior id="spb1" alignId="ot1" popupId="debug" type="tapHold"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton action="__back" id="cbbck" text="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
+                <amx:commandLink action="RateSession" id="cb0">
+                    <amx:image id="irate" source="/images/ic_action_about.png" inlineStyle="height:32px; width:32px;"/>
+                </amx:commandLink>
+                <amx:commandLink actionListener="#{bindings.saveSessions.execute}" action="__back" id="cb2">
+                    <amx:image id="isave" source="/images/ic_action_save.png" inlineStyle="height:32px; width:32px;"/>
+                </amx:commandLink>
+                <amx:commandLink id="clmenu">
+                    <amx:image id="imenu" source="/images/ic_action_overflow.png"
+                               inlineStyle="height:32px; width:32px;"/>
+                    <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action"
+                                           popupId="p1"/>
+                </amx:commandLink>
+                <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;"
+                           rendered="#{applicationScope.ampa_bgtask_running}"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
+            <amx:facet name="top">
+                <amx:panelGroupLayout layout="vertical"
+                                      inlineStyle="#{applicationScope.message != ''?'background-color:red;':'background-color:green;'}">
+                    <!-- 
+    <amx:outputText value="Next time you enter the 'FakeBeacon' region you will be able to see information relevant to your location within the region here." 
+                    id="ot2" rendered="#{applicationScope.ranging != true}"/>
+    <amx:outputText value="Welcome to the 'FakeBeacon' region!!" 
+                    rendered="#{applicationScope.ranging == true}" id="ot3"/>
+    <amx:outputText value="As you approach any beacon in the region, information will be displayed below about that beacon." 
+                    id="ot4" rendered="#{applicationScope.ranging == true}"/>
+    <amx:spacer id="s1" height="20"/>
+-->
+                    <amx:inputText id="oh1" value="#{applicationScope.message}" readOnly="true"/>
+                    <amx:inputText value="#{bindings.title.inputValue}" inlineStyle="font-size:large; font-weight:bold;"
+                                   readOnly="true" id="it15"></amx:inputText>
+                    <amx:inputText value="#{bindings.startTime.inputValue} - #{bindings.endTime.inputValue}"
+                                   readOnly="true" id="it13"></amx:inputText>
+                    
+
+                    <amx:inputText value="#{bindings.sessionDate.inputValue}"
+                                   readOnly="true" id="it12">
+                        <amx:convertDateTime id="cdt1" dateStyle="long" pattern="" type="date"/>
+                    </amx:inputText>
+                </amx:panelGroupLayout>
+            </amx:facet>
+            <amx:facet name="center">
+                <amx:panelFormLayout id="pfl1" fieldHalign="start" labelWidth="25%" fieldWidth="75%" 
+                                     labelPosition="end">
+                   <!--
+                    <amx:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}" readOnly="false"
+                                   inputType="number" id="it1">
+                        <amx:convertNumber groupingUsed="false" id="cn1"/>
+                    </amx:inputText>
+                    -->
+                    <amx:inputText value="#{bindings.hall.inputValue}" label="#{bindings.hall.hints.label}"
+                                   readOnly="true" id="it7"></amx:inputText>
+            
+            
+            <amx:inputText value="#{bindings.track.inputValue}" label="#{bindings.track.hints.label}"
+                                   readOnly="true" id="it17"></amx:inputText>
+                 
+                    <amx:inputText value="#{bindings.abstract1.inputValue}" label="#{bindings.abstract1.hints.label}" rows="10"
+                                   readOnly="true" id="it2"></amx:inputText>
+                                   
+                                   
+                                   
+                                   
+                          <!--         
+                    <amx:inputText value="#{bindings.contentLevel.inputValue}"
+                                   label="#{bindings.contentLevel.hints.label}" readOnly="false" inputType="number"
+                                   id="it3">
+                        <amx:convertNumber groupingUsed="false" id="cn3"/>
+                    </amx:inputText>
+                    <amx:inputText value="#{bindings.day.inputValue}" label="#{bindings.day.hints.label}"
+                                   readOnly="false" id="it4"></amx:inputText>
+                    <amx:inputText value="#{bindings.endTime.inputValue}" label="#{bindings.endTime.hints.label}"
+                                   readOnly="false" id="it5"></amx:inputText>
+                    <amx:inputText value="#{bindings.experience.inputValue}" label="#{bindings.experience.hints.label}"
+                                   readOnly="false" id="it6"></amx:inputText>
+         
+                    <amx:inputText value="#{bindings.length.inputValue}" label="#{bindings.length.hints.label}"
+                                   readOnly="false" inputType="number" id="it8">
+                        <amx:convertNumber groupingUsed="false" id="cn8"/>
+                    </amx:inputText>
+                    <amx:inputText value="#{bindings.preferredLength.inputValue}"
+                                   label="#{bindings.preferredLength.hints.label}" readOnly="false" id="it9"></amx:inputText>
+                    <amx:inputText value="#{bindings.presentationFormat.inputValue}"
+                                   label="#{bindings.presentationFormat.hints.label}" readOnly="false" id="it10"></amx:inputText>
+                    <amx:inputText value="#{bindings.presentationStatus.inputValue}"
+                                   label="#{bindings.presentationStatus.hints.label}" readOnly="false" id="it11"></amx:inputText>
+                    <amx:inputText value="#{bindings.stream.inputValue}" label="#{bindings.stream.hints.label}"
+                                   readOnly="false" id="it14"></amx:inputText>
+                    <amx:inputText value="#{bindings.topic.inputValue}" label="#{bindings.topic.hints.label}"
+                                   readOnly="false" id="it16"></amx:inputText>
+                                   -->
+                    <!--
+                    <amx:inputText value="#{bindings.speakerId.inputValue}" label="#{bindings.speakerId.hints.label}"
+                                   readOnly="false" inputType="number" id="it18">
+                        <amx:convertNumber groupingUsed="false" id="cn18"/>
+                    </amx:inputText>
+                    -->
+                    <amx:inputText value="#{bindings.speakerName.inputValue}"
+                                   label="#{bindings.speakerName.hints.label}" readOnly="false" id="it19"></amx:inputText>
+                </amx:panelFormLayout>
+            </amx:facet>
+            <!--
+            <amx:facet name="bottom">
+                <amx:outputText id="hdrAttendances" value="Attendances"/>
+                <amx:listView var="row" value="#{bindings.attendances.collectionModel}"
+                              fetchSize="#{bindings.attendances.rangeSize}" id="lv1Attendances"
+                              selectedRowKeys="#{bindings.attendances.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.attendances.collectionModel.makeCurrent}"
+                              showMoreStrategy="autoScroll" bufferStrategy="viewport">
+                    <amx:listItem id="liAttendances" action="Attendances">
+                        <amx:tableLayout width="100%" id="tl1Attendances">
+                            <amx:rowLayout id="rl1Attendances">
+                                <amx:cellFormat width="10px" rowSpan="2" id="cf2Attendances"/>
+                                <amx:cellFormat width="100%" columnSpan="2" height="28px" id="cf3Attendances">
+                                    <amx:outputText value="#{row.id}" id="ot2Attendances"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat width="10px" rowSpan="2" id="cf1Attendances"/>
+                            </amx:rowLayout>
+                            <amx:rowLayout id="rl2Attendances">
+                                <amx:cellFormat width="60%" height="12px" id="cf5Attendances"></amx:cellFormat>
+                                <amx:cellFormat width="40%" halign="end" id="cf6Attendances"></amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                    </amx:listItem>
+                </amx:listView>
+            </amx:facet>
+            -->
+        </amx:panelStretchLayout>
+    </amx:panelPage>
+    <amx:popup id="debug" inlineStyle="width:600px;" autoDismiss="true">
+        <amx:panelGroupLayout id="pgl3" layout="vertical">
+            <amx:outputText value="Device Token:" id="ot4"/>
+            <amx:outputText value="#{applicationScope.deviceToken}" id="ot54"/>
+            <amx:outputText value="Register Device Request Payload:" id="ot34"/>
+            <amx:outputText value="#{applicationScope.registerDevicePayload}" id="otr"/>
+            <amx:outputText value="Register Device Response Payload:" id="ote4"/>
+            <amx:outputText value="#{applicationScope.registerDeviceReturnPayload}" id="otwr"/>
+            <!--
+      <amx:commandButton actionListener="#{bindings.sendEmail.execute}" text="Email Payload" styleClass="email"
+                         disabled="#{!bindings.sendEmail.enabled}" id="cb1"/>
+     -->
+        </amx:panelGroupLayout>
+    </amx:popup>
+    <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
+        <amx:panelGroupLayout id="pglpu" layout="vertical">
+            <amx:spacer height="10" id="ms1"/>
+            <amx:commandLink actionListener="#{bindings.DeleteSessions.execute}" text="Delete" action="__back"
+                             id="mendel"/>
+            <amx:spacer height="20" id="msDel"/>
+            <amx:commandLink actionListener="#{bindings.CreateAttendances.execute}" text="New Attendances"
+                             action="newAttendances" id="newAttendances"/>
+            <amx:spacer height="20" id="msnewAttendances"/>
+            <amx:commandLink id="menSync"
+                             disabled="#{!bindings.hasSessionsDataSynchActions.inputValue or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown'}"
+                             actionListener="#{bindings.synchronizeSessions.execute}" text="Synchronize">
+                <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>
+            </amx:commandLink>
+            <amx:spacer height="20" id="ms3"/>
+            <amx:commandLink id="menPsa" disabled="#{!bindings.hasSessionsDataSynchActions.inputValue}"
+                             text="Pending Sync Actions" actionListener="#{GoToFeature.goToDataSynchFeature}">
+                <amx:setPropertyListener id="menspaspl" from="com.blogspot.lucbors.uma.mobile.model.Sessions"
+                                         to="#{applicationScope.dataSynchEntity}"/>
+                <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>
+            </amx:commandLink>
+            <amx:spacer height="10" id="ms4"/>
+        </amx:panelGroupLayout>
+    </amx:popup>
+</amx:view>

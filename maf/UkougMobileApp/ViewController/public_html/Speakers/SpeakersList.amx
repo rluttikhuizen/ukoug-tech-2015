@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+
+
+
+  <amx:panelPage id="firstPage">
+    <amx:facet name="header">
+      <amx:outputText value="Speakers" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+          </amx:facet>
+    <amx:facet name="secondary">
+      <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
+            <amx:commandLink actionListener="#{bindings.CreateSpeakers.execute}"  action="Speakers"
+                         id="cb4">
+          <amx:image id="inew" source="/images/ic_action_new.png" inlineStyle="height:32px; width:32px;"/>
+      </amx:commandLink>
+                <amx:commandLink  id="clmenu">
+            <amx:image id="imenu" source="/images/ic_action_overflow.png" inlineStyle="height:32px; width:32px;"/>
+            <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action" popupId="p1"/>
+          </amx:commandLink>
+          <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;" 
+            rendered="#{applicationScope.ampa_bgtask_running}"/>
+      </amx:panelGroupLayout>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
+      <amx:facet name="top">
+                
+        <amx:panelGroupLayout id="pgl1" layout="horizontal">
+          <amx:inputText value="#{bindings.searchValue.inputValue}" hintText="Search Speakers" label="" id="it1"/>
+          <amx:commandLink actionListener="#{bindings.findSpeakers.execute}" 
+                             id="cb3">
+            <amx:image id="ifind" source="/images/ic_action_search.png" inlineStyle="height:32px; width:32px;"/>
+          </amx:commandLink>
+        </amx:panelGroupLayout>
+              </amx:facet>
+      <amx:facet name="center">
+        <amx:listView var="row" value="#{bindings.speakers.collectionModel}"
+                    fetchSize="#{bindings.speakers.rangeSize}" id="lv1" 
+                   selectedRowKeys="#{bindings.speakers.collectionModel.selectedRow}"
+ 
+                   selectionListener="#{bindings.speakers.collectionModel.makeCurrent}" 
+                  
+                   showMoreStrategy="autoScroll"
+ bufferStrategy="viewport"
+             >
+        <amx:listItem id="li2" action="Speakers">
+
+                                   
+          <amx:tableLayout width="100%" id="tl1Speakers">
+            <amx:rowLayout id="rl1Speakers">
+              <amx:cellFormat width="10px" rowSpan="2" id="cf2Speakers"/>
+              <amx:cellFormat   width="60%"  height="28px" id="cf3Speakers">
+                <amx:outputText value="#{row.firstname} #{row.lastname}" id="ot2Speakers"/>
+              </amx:cellFormat>
+              <amx:cellFormat width="10px" rowSpan="2" id="cf1Speakers"/>
+              <amx:cellFormat width="40%" halign="end" id="cf4Speakers">
+                                <amx:outputText value="#{row.company}" styleClass="adfmf-listItem-highlightText" id="ot3Speakers"/>
+                              </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2Speakers">
+              <amx:cellFormat width="60%" height="12px" id="cf5Speakers">
+                              </amx:cellFormat>
+              <amx:cellFormat width="40%" halign="end" id="cf6Speakers">
+                              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+
+           
+        </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+  <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
+    <amx:panelGroupLayout id="pglpu" layout="vertical">
+      <amx:spacer height="10" id="ms1"/>
+ 
+            <amx:commandLink  text="Refresh" actionListener="#{bindings.findAllSpeakersRemote.execute}" disabled="#{deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown'}"  id="menRefr">
+        <amx:closePopupBehavior id="mencRefr" popupId="p1" type="action"/>                         
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms2"/>
+                  <amx:commandLink id="menSync" disabled="#{!bindings.hasSpeakersDataSynchActions.inputValue or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown'}" 
+       actionListener="#{bindings.synchronizeSpeakers.execute}" text="Synchronize">
+        <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>                                                 
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms3"/>
+            <amx:commandLink id="menPsa" disabled="#{!bindings.hasSpeakersDataSynchActions.inputValue}" text="Pending Sync Actions"
+                         actionListener="#{GoToFeature.goToDataSynchFeature}">
+        <amx:setPropertyListener id="menspaspl" from="com.blogspot.lucbors.uma.mobile.model.Speakers"
+                                 to="#{applicationScope.dataSynchEntity}"/>
+        <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>                         
+      </amx:commandLink>
+      <amx:spacer height="10" id="ms4"/>
+    </amx:panelGroupLayout>
+  </amx:popup>
+</amx:view>
