@@ -89,7 +89,7 @@ public class NativePushNotificationListener implements EventListener {
 
                 RestServiceAdapter adapter = Model.createRestServiceAdapter();
                 adapter.clearRequestProperties();
-                adapter.setConnectionName("UkougRestConn");
+                adapter.setConnectionName("MCS");
                 adapter.setRequestType("POST");
                 adapter.setRequestURI("/platform/devices/register");
                 adapter.addRequestProperty("Authorization", "Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw");

@@ -107,9 +107,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">257.46875</property>
+         name="y">317.40234</property>
       <property
-         name="x">253.0</property>
+         name="x">254.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -119,7 +119,7 @@
       <property
          name="fromOutcome">RateSession</property>
       <property
-         name="sdm:polyPoints">B50,253.8125,145.36719,253.0,203.40234,T50</property>
+         name="sdm:polyPoints">B50,253.8125,145.36719,254.0,263.33594,T50</property>
    </ControlFlowCase>
    <Router
       id="Router10">

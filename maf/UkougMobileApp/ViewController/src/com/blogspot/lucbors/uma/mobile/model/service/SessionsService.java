@@ -1,6 +1,9 @@
 package com.blogspot.lucbors.uma.mobile.model.service;
 
 
+import com.blogspot.lucbors.uma.mobile.model.Attendance;
+import com.blogspot.lucbors.uma.mobile.model.Attendances;
+
 import java.util.ArrayList;
 
 import java.util.List;
@@ -9,6 +12,10 @@ import oracle.ateam.sample.mobile.v2.persistence.util.EntityUtils;
 import oracle.ateam.sample.mobile.v2.persistence.service.EntityCRUDService;
 
 import com.blogspot.lucbors.uma.mobile.model.Sessions;
+
+import javax.el.ValueExpression;
+
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 
 /**
@@ -96,8 +103,29 @@ public class SessionsService extends EntityCRUDService<Sessions> {
      * The insert or update is determined by calling isNewEntity on the sessions instance.
      * @param sessions
      */
+
+    // dirty !!! overwrite
     public void saveSessions(Sessions sessions) {
-        super.mergeEntity(sessions);
+        //  super.mergeEntity(sessions);
+
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{applicationScope.userName}", String.class);
+        String theUserName = (String) ve.getValue(AdfmfJavaUtilities.getELContext());
+        List<Attendances> allSessionAttendances = sessions.getAttendances();
+
+        Attendances myAtt = new Attendances();
+
+        for (Attendances att : allSessionAttendances) {
+            if (att.getUsername() == theUserName) {
+                myAtt = att;
+                break;
+            }
+        }
+
+        myAtt.setPresent(true);
+        AttendancesService ats = new AttendancesService();
+
+
+        ats.saveAttendances(myAtt);
     }
 
     /**

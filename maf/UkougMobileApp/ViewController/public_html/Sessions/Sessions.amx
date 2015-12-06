@@ -30,8 +30,10 @@
         </amx:facet>
         <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
             <amx:facet name="top">
-                <amx:panelGroupLayout layout="vertical"
-                                      inlineStyle="#{applicationScope.message != ''?'background-color:red;':'background-color:green;'}">
+                <!--
+             inlineStyle="#{applicationScope.message != ''?'background-color:red;':'background-color:green;'}"
+             -->
+                <amx:panelGroupLayout layout="vertical">
                     <!-- 
     <amx:outputText value="Next time you enter the 'FakeBeacon' region you will be able to see information relevant to your location within the region here." 
                     id="ot2" rendered="#{applicationScope.ranging != true}"/>
@@ -46,18 +48,15 @@
                                    readOnly="true" id="it15"></amx:inputText>
                     <amx:inputText value="#{bindings.startTime.inputValue} - #{bindings.endTime.inputValue}"
                                    readOnly="true" id="it13"></amx:inputText>
-                    
-
-                    <amx:inputText value="#{bindings.sessionDate.inputValue}"
-                                   readOnly="true" id="it12">
+                    <amx:inputText value="#{bindings.sessionDate.inputValue}" readOnly="true" id="it12">
                         <amx:convertDateTime id="cdt1" dateStyle="long" pattern="" type="date"/>
                     </amx:inputText>
                 </amx:panelGroupLayout>
             </amx:facet>
             <amx:facet name="center">
-                <amx:panelFormLayout id="pfl1" fieldHalign="start" labelWidth="25%" fieldWidth="75%" 
+                <amx:panelFormLayout id="pfl1" fieldHalign="start" labelWidth="25%" fieldWidth="75%"
                                      labelPosition="end">
-                   <!--
+                    <!--
                     <amx:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}" readOnly="false"
                                    inputType="number" id="it1">
                         <amx:convertNumber groupingUsed="false" id="cn1"/>
@@ -65,18 +64,11 @@
                     -->
                     <amx:inputText value="#{bindings.hall.inputValue}" label="#{bindings.hall.hints.label}"
                                    readOnly="true" id="it7"></amx:inputText>
-            
-            
-            <amx:inputText value="#{bindings.track.inputValue}" label="#{bindings.track.hints.label}"
+                    <amx:inputText value="#{bindings.track.inputValue}" label="#{bindings.track.hints.label}"
                                    readOnly="true" id="it17"></amx:inputText>
-                 
-                    <amx:inputText value="#{bindings.abstract1.inputValue}" label="#{bindings.abstract1.hints.label}" rows="10"
-                                   readOnly="true" id="it2"></amx:inputText>
-                                   
-                                   
-                                   
-                                   
-                          <!--         
+                    <amx:inputText value="#{bindings.abstract1.inputValue}" label="#{bindings.abstract1.hints.label}"
+                                   rows="10" readOnly="true" id="it2"></amx:inputText>
+                    <!--         
                     <amx:inputText value="#{bindings.contentLevel.inputValue}"
                                    label="#{bindings.contentLevel.hints.label}" readOnly="false" inputType="number"
                                    id="it3">
@@ -114,7 +106,6 @@
                                    label="#{bindings.speakerName.hints.label}" readOnly="false" id="it19"></amx:inputText>
                 </amx:panelFormLayout>
             </amx:facet>
-            <!--
             <amx:facet name="bottom">
                 <amx:outputText id="hdrAttendances" value="Attendances"/>
                 <amx:listView var="row" value="#{bindings.attendances.collectionModel}"
@@ -122,7 +113,7 @@
                               selectedRowKeys="#{bindings.attendances.collectionModel.selectedRow}"
                               selectionListener="#{bindings.attendances.collectionModel.makeCurrent}"
                               showMoreStrategy="autoScroll" bufferStrategy="viewport">
-                    <amx:listItem id="liAttendances" action="Attendances">
+                    <amx:listItem id="liAttendances" action="Attendances" rendered="#{row.username} eq #{applicationScope.userName}" >
                         <amx:tableLayout width="100%" id="tl1Attendances">
                             <amx:rowLayout id="rl1Attendances">
                                 <amx:cellFormat width="10px" rowSpan="2" id="cf2Attendances"/>
@@ -139,7 +130,7 @@
                     </amx:listItem>
                 </amx:listView>
             </amx:facet>
-            -->
+        
         </amx:panelStretchLayout>
     </amx:panelPage>
     <amx:popup id="debug" inlineStyle="width:600px;" autoDismiss="true">

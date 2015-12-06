@@ -34,10 +34,14 @@
         <amx:outputText value="#{bindings.id.inputValue}" id="ot2"/>
       </amx:panelLabelAndMessage>
       -->
+         <!--  
             <amx:panelLabelAndMessage label="Rate Session" id="plam1">
                 <dvtm:ratingGauge id="ratingGauge1" value="#{bindings.rating.inputValue}" shape="circle" maxValue="3"
                                   selectedColor="#{bindings.rating.inputValue == '1'?'red':(bindings.rating.inputValue == '2'?'yellow':'green')}"/>
             </amx:panelLabelAndMessage>
+            
+            -->
+            
             <!--amx:inputText value="#{bindings.rating.inputValue}" label="#{bindings.rating.hints.label}" id="it1"/-->
             <!--
       <amx:panelLabelAndMessage label="#{bindings.isNewEntity.hints.label}" id="plam5">
@@ -46,27 +50,27 @@
       </amx:panelLabelAndMessage>
       -->
         </amx:panelFormLayout>
-        <amx:tableLayout id="tl1" width="100%">
+        <amx:tableLayout id="tl1" width="100%" rendered="#{bindings.present.inputValue}">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="33%" halign="center">
                     <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cl2"
                     actionListener="#{bindings.saveAttendance.execute}">
                         <amx:image id="i3" source="/images/NEGATIVE.png" inlineStyle="width:66%;"/>
-                        <amx:setPropertyListener from="NEGATIVE" to="#{bindings.rating.inputValue}" type="action"/>
+                        <amx:setPropertyListener from="NEGATIVE" to="#{pageFlowScope.rating}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf2" width="33%" halign="center">
                     <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cb3"
                                         actionListener="#{bindings.saveAttendance.execute}">
                         <amx:image id="i2" source="/images/NEUTRAL.png" inlineStyle="width:66%;"/>
-                        <amx:setPropertyListener from="NEUTRAL" to="#{bindings.rating.inputValue}" type="action"/>
+                        <amx:setPropertyListener from="NEUTRAL" to="#{pageFlowScope.rating}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf3" width="33%" halign="center">
                     <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cb4"
                                         actionListener="#{bindings.saveAttendance.execute}">
                         <amx:image id="i1" source="/images/POSITIVE.png" inlineStyle="width:66%;"/>
-                        <amx:setPropertyListener from="POSITIVE" to="#{bindings.rating.inputValue}" type="action"/>
+                        <amx:setPropertyListener from="POSITIVE" to="#{pageFlowScope.rating}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
