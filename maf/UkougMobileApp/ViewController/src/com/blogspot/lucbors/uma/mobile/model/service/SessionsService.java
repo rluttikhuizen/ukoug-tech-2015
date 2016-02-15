@@ -2,7 +2,6 @@ package com.blogspot.lucbors.uma.mobile.model.service;
 
 
 import com.blogspot.lucbors.uma.mobile.model.Attendance;
-import com.blogspot.lucbors.uma.mobile.model.Attendances;
 
 import java.util.ArrayList;
 
@@ -13,9 +12,15 @@ import oracle.ateam.sample.mobile.v2.persistence.service.EntityCRUDService;
 
 import com.blogspot.lucbors.uma.mobile.model.Sessions;
 
+import java.math.BigDecimal;
+
+import java.util.HashMap;
+
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+
+import oracle.ateam.sample.mobile.util.MCSManager;
 
 
 /**
@@ -105,29 +110,83 @@ public class SessionsService extends EntityCRUDService<Sessions> {
      */
 
     // dirty !!! overwrite
-    public void saveSessions(Sessions sessions) {
+    public void saveSessions(Sessions session) {
         //  super.mergeEntity(sessions);
 
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{applicationScope.userName}", String.class);
         String theUserName = (String) ve.getValue(AdfmfJavaUtilities.getELContext());
-        List<Attendances> allSessionAttendances = sessions.getAttendances();
+        
+        // get the rating from pageflowscope
+        ValueExpression ve2 = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.rating}", String.class);
+        String rating = (String) ve2.getValue(AdfmfJavaUtilities.getELContext());
+        // clear it now. we put it in a local var. No need to keep it in pfs
+        ve2.setValue(AdfmfJavaUtilities.getELContext(), null);
+        
+        AttendanceService ats = new AttendanceService();
 
-        Attendances myAtt = new Attendances();
+        List<Attendance> allSessionAttendances = session.getAttendances();
+ 
+        Attendance myAtt = null;
 
-        for (Attendances att : allSessionAttendances) {
-            if (att.getUsername() == theUserName) {
-                myAtt = att;
-                break;
+        for (Attendance att : allSessionAttendances) {
+            if (att.getUsername().equalsIgnoreCase(theUserName)) {
+                myAtt=att;
+                myAtt.setId(att.getId());
+                myAtt.setUsername(theUserName);
+                myAtt.setSessionId(att.getSessionId());
+                break;                
             }
+          
+        }
+
+        if(myAtt==null){
+            myAtt = new Attendance();
+            myAtt.setId(new BigDecimal(-1));
+            myAtt.setUsername(theUserName);
+
         }
 
         myAtt.setPresent(true);
-        AttendancesService ats = new AttendancesService();
+        myAtt.setRating(rating);
+        myAtt.setSessionId(session.getId());
 
 
-        ats.saveAttendances(myAtt);
+
+        ats.saveAttendance(myAtt);
+        
+        
+        HashMap props = new HashMap();
+        props.put("Session", session.getTitle());
+        props.put("Rating", rating);
+        
+        
+        MCSManager.getInstance().sendEvent(false, "EvaluationSent",props );
+        
+        System.out.println("event sent");
     }
 
+
+
+
+    public void createAttendance(Sessions session) {
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{applicationScope.userName}", String.class);
+        String theUserName = (String) ve.getValue(AdfmfJavaUtilities.getELContext());
+
+    Attendance myAtt = null;
+        myAtt.setAttendeeId(null);
+        myAtt.setCompany(null);
+        myAtt.setId(null);
+        
+        myAtt.setIsNewEntity(true);
+        myAtt.setName(theUserName);
+        myAtt.setPresent(true);
+        myAtt.setRating(null);
+        myAtt.setSessionId(session.getId());
+        myAtt.setStatus("present");
+        myAtt.setUsername(theUserName);
+
+
+    }
     /**
      * Retrieves all sessions instances using the configured persistence managers and populates the sessions list
      * with the result.

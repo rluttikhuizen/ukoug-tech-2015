@@ -8,8 +8,8 @@
     <accessorIterator id="sessionsIterator" MasterBinding="SessionsServiceIterator" Binds="sessions"
                       BeanClass="com.blogspot.lucbors.uma.mobile.model.Sessions" DataControl="SessionsService"
                       RangeSize="25"/>
-    <accessorIterator id="attendancesIterator" MasterBinding="sessionsIterator" Binds="attendances"
-                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendances" DataControl="SessionsService"
+    <accessorIterator id="attendanceIterator" MasterBinding="sessionsIterator" Binds="attendances"
+                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendance" DataControl="SessionsService"
                       RangeSize="25"/>
   </executables>
   <bindings>
@@ -18,7 +18,7 @@
         <Item Value="hasSessionsDataSynchActions"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="isNewEntity" IterBinding="attendancesIterator">
+    <attributeValues id="isNewEntity" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="isNewEntity"/>
       </AttrNames>
@@ -29,58 +29,53 @@
       <NamedData NDName="entity" NDValue="#{bindings.sessionsIterator.currentRow.dataProvider}"
                  NDType="com.blogspot.lucbors.uma.mobile.model.Sessions"/>
     </methodAction>
-    <attributeValues id="id" IterBinding="attendancesIterator">
+    <attributeValues id="id" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="id"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="status" IterBinding="attendancesIterator">
+    <attributeValues id="status" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="status"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="attendeeId" IterBinding="attendancesIterator">
+    <attributeValues id="attendeeId" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="attendeeId"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="sessionId" IterBinding="attendancesIterator">
+    <attributeValues id="sessionId" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="sessionId"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="name" IterBinding="attendancesIterator">
+    <attributeValues id="name" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="name"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="username" IterBinding="attendancesIterator">
+    <attributeValues id="username" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="username"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="company" IterBinding="attendancesIterator">
+    <attributeValues id="company" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="company"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="present" IterBinding="attendancesIterator">
+    <attributeValues id="present" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="present"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="rating" IterBinding="attendancesIterator">
+    <attributeValues id="rating" IterBinding="attendanceIterator">
       <AttrNames>
         <Item Value="rating"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues id="sessionsId" IterBinding="attendancesIterator">
-      <AttrNames>
-        <Item Value="sessionsId"/>
-      </AttrNames>
-    </attributeValues>
     <action id="DeleteAttendances" RequiresUpdateModel="false" Action="removeCurrentRow"
-            IterBinding="attendancesIterator"/>
+            IterBinding="attendanceIterator"/>
     <methodAction id="synchronizeSessions" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="synchronizeSessions" DataControl="SessionsService"
                   InstanceName="data.SessionsService.dataProvider" IsViewObjectMethod="false">

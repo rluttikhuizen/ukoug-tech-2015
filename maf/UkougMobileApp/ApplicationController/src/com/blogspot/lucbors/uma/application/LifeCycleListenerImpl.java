@@ -10,6 +10,7 @@ import oracle.adfmf.framework.event.EventSourceFactory;
 
 import oracle.ateam.sample.mobile.lifecycle.InitDBLifeCycleListener;
 import oracle.ateam.sample.mobile.util.ADFMobileLogger;
+import oracle.ateam.sample.mobile.util.MCSManager;
 import oracle.ateam.sample.mobile.util.TaskExecutor;
 import oracle.ateam.sample.mobile.util.UsageTracker;
 import oracle.ateam.sample.mobile.v2.persistence.db.DBConnectionFactory;
@@ -93,6 +94,7 @@ public class LifeCycleListenerImpl implements LifeCycleListener, PushNotificatio
             EventSourceFactory.getEventSource(EventSourceFactory.NATIVE_LOCAL_NOTIFICATION_EVENT_SOURCE_NAME);
         evtSourceLocal.addListener(new NativeLocalNotificationListener());
 
+
     }
 
     /**
@@ -131,6 +133,8 @@ public class LifeCycleListenerImpl implements LifeCycleListener, PushNotificatio
      */
     public void activate() {
         // Add code here...
+        MCSManager.getInstance().startSession();
+
     }
 
     /**
@@ -157,6 +161,9 @@ public class LifeCycleListenerImpl implements LifeCycleListener, PushNotificatio
         // from InitDBLifeCycleListener AMPA
         DBConnectionFactory.closeConnectionIfNeeded();
         TaskExecutor.shutDown();
+        
+        MCSManager.getInstance().endSession();
+
     }
 
     public long getNotificationStyle() {

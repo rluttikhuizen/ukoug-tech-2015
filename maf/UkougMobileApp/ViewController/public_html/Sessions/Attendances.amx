@@ -1,88 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-
-
-
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
- 
-      <amx:outputText value="Attendances" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-       <amx:commandButton action="__back" id="cbbck" text="Back"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
-            <amx:commandLink actionListener="#{bindings.saveSessions.execute}" 
-              action="__back"
-                           id="cb2">
-          <amx:image id="isave" source="/images/ic_action_save.png" inlineStyle="height:32px; width:32px;"/>
-      </amx:commandLink>       
-                <amx:commandLink  id="clmenu">
-            <amx:image id="imenu" source="/images/ic_action_overflow.png" inlineStyle="height:32px; width:32px;"/>
-            <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action" popupId="p1"/>
-          </amx:commandLink>
-          <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;" 
-            rendered="#{applicationScope.ampa_bgtask_running}"/>
-      </amx:panelGroupLayout>
-
-    </amx:facet>
-    <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
-      <amx:facet name="top">
-       <amx:panelFormLayout id="pfl1" fieldHalign="start" labelWidth="40%" fieldWidth="60%" labelPosition="end">
-                                             <amx:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}" readOnly="false"  inputType="number"                        id="it1">
-                    <amx:convertNumber groupingUsed="false" id="cn1"/>
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.status.inputValue}" label="#{bindings.status.hints.label}" readOnly="false"                        id="it2">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.attendeeId.inputValue}" label="#{bindings.attendeeId.hints.label}" readOnly="false"  inputType="number"                        id="it3">
-                    <amx:convertNumber groupingUsed="false" id="cn3"/>
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.sessionId.inputValue}" label="#{bindings.sessionId.hints.label}" readOnly="false"  inputType="number"                        id="it4">
-                    <amx:convertNumber groupingUsed="false" id="cn4"/>
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.name.inputValue}" label="#{bindings.name.hints.label}" readOnly="false"                        id="it5">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.username.inputValue}" label="#{bindings.username.hints.label}" readOnly="false"                        id="it6">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.company.inputValue}" label="#{bindings.company.hints.label}" readOnly="false"                        id="it7">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.present.inputValue}" label="#{bindings.present.hints.label}" readOnly="false"                        id="it8">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.rating.inputValue}" label="#{bindings.rating.hints.label}" readOnly="false"                        id="it9">
-                  </amx:inputText>
-                                                     <amx:inputText value="#{bindings.sessionsId.inputValue}" label="#{bindings.sessionsId.hints.label}" readOnly="false"  inputType="number"                        id="it10">
-                    <amx:convertNumber groupingUsed="false" id="cn10"/>
-                  </amx:inputText>
-                                                 </amx:panelFormLayout>
-      </amx:facet>
-      <amx:facet name="center">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Attendances" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton action="__back" id="cbbck" text="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
+                <amx:commandLink actionListener="#{bindings.saveSessions.execute}" action="__back" id="cb2">
+                    <amx:image id="isave" source="/images/ic_action_save.png" inlineStyle="height:32px; width:32px;"/>
+                </amx:commandLink>
+                <amx:commandLink id="clmenu">
+                    <amx:image id="imenu" source="/images/ic_action_overflow.png"
+                               inlineStyle="height:32px; width:32px;"/>
+                    <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action"
+                                           popupId="p1"/>
+                </amx:commandLink>
+                <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;"
+                           rendered="#{applicationScope.ampa_bgtask_running}"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
+            <amx:facet name="top">
+                <amx:panelFormLayout id="pfl1" fieldHalign="start" labelWidth="40%" fieldWidth="60%"
+                                     labelPosition="end">
+                    <amx:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}" readOnly="true"
+                                   inputType="number" id="it1">
+                        <amx:convertNumber groupingUsed="false" id="cn1"/>
+                    </amx:inputText>
+                    <amx:inputText value="#{bindings.status.inputValue}" label="#{bindings.status.hints.label}"
+                                   readOnly="true" id="it2"></amx:inputText>
+                    <amx:inputText value="#{bindings.attendeeId.inputValue}" label="#{bindings.attendeeId.hints.label}"
+                                   readOnly="true" inputType="number" id="it3">
+                        <amx:convertNumber groupingUsed="false" id="cn3"/>
+                    </amx:inputText>
+                    <amx:inputText value="#{bindings.sessionId.inputValue}" label="#{bindings.sessionId.hints.label}"
+                                   readOnly="true" inputType="number" id="it4">
+                        <amx:convertNumber groupingUsed="false" id="cn4"/>
+                    </amx:inputText>
+                    <amx:inputText value="#{bindings.name.inputValue}" label="#{bindings.name.hints.label}"
+                                   readOnly="true" id="it5"></amx:inputText>
+                    <amx:inputText value="#{bindings.username.inputValue}" label="#{bindings.username.hints.label}"
+                                   readOnly="true" id="it6"></amx:inputText>
+                    <amx:inputText value="#{bindings.company.inputValue}" label="#{bindings.company.hints.label}"
+                                   readOnly="true" id="it7"></amx:inputText>
+                    <amx:inputText value="#{bindings.present.inputValue}" label="#{bindings.present.hints.label}"
+                                   readOnly="true" id="it8"></amx:inputText>
+                    <amx:inputText value="#{bindings.rating.inputValue}" label="#{bindings.rating.hints.label}"
+                                   readOnly="true" id="it9"></amx:inputText>
+               
+                </amx:panelFormLayout>
             </amx:facet>
-    </amx:panelStretchLayout>
-  </amx:panelPage>
-  <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
-    <amx:panelGroupLayout id="pglpu" layout="vertical">
-      <amx:spacer height="10" id="ms1"/>
-
-              <amx:commandLink actionListener="#{bindings.DeleteAttendances.execute}" text="Delete" action="__back" id="mendel"/>
-        <amx:spacer height="20" id="msDel"/>
-      
-      
-      
-            <amx:commandLink id="menSync" disabled="#{!bindings.hasSessionsDataSynchActions.inputValue or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown'}" 
-       actionListener="#{bindings.synchronizeSessions.execute}" text="Synchronize">
-        <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>                                                 
-      </amx:commandLink>
-      <amx:spacer height="20" id="ms3"/>
-            <amx:commandLink id="menPsa" disabled="#{!bindings.hasSessionsDataSynchActions.inputValue}" text="Pending Sync Actions"
-                         actionListener="#{GoToFeature.goToDataSynchFeature}">
-        <amx:setPropertyListener id="menspaspl" from="com.blogspot.lucbors.uma.mobile.model.Sessions"
-                                 to="#{applicationScope.dataSynchEntity}"/>
-        <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>                         
-      </amx:commandLink>
-      <amx:spacer height="10" id="ms4"/>
-
-    </amx:panelGroupLayout>
-  </amx:popup>
+            <amx:facet name="center"></amx:facet>
+        </amx:panelStretchLayout>
+    </amx:panelPage>
+    <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
+        <amx:panelGroupLayout id="pglpu" layout="vertical">
+            <amx:spacer height="10" id="ms1"/>
+            <amx:commandLink actionListener="#{bindings.DeleteAttendances.execute}" text="Delete" action="__back"
+                             id="mendel"/>
+            <amx:spacer height="20" id="msDel"/>
+            <amx:commandLink id="menSync"
+                             disabled="#{!bindings.hasSessionsDataSynchActions.inputValue or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown'}"
+                             actionListener="#{bindings.synchronizeSessions.execute}" text="Synchronize">
+                <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>
+            </amx:commandLink>
+            <amx:spacer height="20" id="ms3"/>
+            <amx:commandLink id="menPsa" disabled="#{!bindings.hasSessionsDataSynchActions.inputValue}"
+                             text="Pending Sync Actions" actionListener="#{GoToFeature.goToDataSynchFeature}">
+                <amx:setPropertyListener id="menspaspl" from="com.blogspot.lucbors.uma.mobile.model.Sessions"
+                                         to="#{applicationScope.dataSynchEntity}"/>
+                <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>
+            </amx:commandLink>
+            <amx:spacer height="10" id="ms4"/>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>
