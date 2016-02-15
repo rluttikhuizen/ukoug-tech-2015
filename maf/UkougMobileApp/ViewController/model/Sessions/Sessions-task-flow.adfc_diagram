@@ -169,7 +169,7 @@
       <property
          name="fromOutcome">Login</property>
       <property
-         name="sdm:polyPoints">B50,-139.0,146.15369,-65.75134,242.53516,L50</property>
+         name="sdm:polyPoints">B50,-139.0,145.40234,-65.0,242.53516,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

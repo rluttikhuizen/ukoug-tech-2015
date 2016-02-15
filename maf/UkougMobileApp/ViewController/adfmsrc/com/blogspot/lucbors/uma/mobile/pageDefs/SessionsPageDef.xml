@@ -8,8 +8,8 @@
     <accessorIterator id="sessionsIterator" MasterBinding="SessionsServiceIterator" Binds="sessions"
                       BeanClass="com.blogspot.lucbors.uma.mobile.model.Sessions" DataControl="SessionsService"
                       RangeSize="25"/>
-    <accessorIterator id="attendancesIterator" MasterBinding="sessionsIterator" Binds="attendances"
-                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendances" DataControl="SessionsService"
+    <accessorIterator id="attendanceIterator" MasterBinding="sessionsIterator" Binds="attendances"
+                      BeanClass="com.blogspot.lucbors.uma.mobile.model.Attendance" DataControl="SessionsService"
                       RangeSize="25"/>
   </executables>
   <bindings>
@@ -124,17 +124,18 @@
         <Item Value="speakerName"/>
       </AttrNames>
     </attributeValues>
-    <tree id="attendances" IterBinding="attendancesIterator">
-      <nodeDefinition Name="attendances0" DefName="com.blogspot.lucbors.uma.mobile.model.Attendances">
+    <tree id="attendances" IterBinding="attendanceIterator">
+      <nodeDefinition Name="attendances0" DefName="com.blogspot.lucbors.uma.mobile.model.Attendance">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="username"/>
+          <Item Value="rating"/>
           
         </AttrNames>
       </nodeDefinition>
     </tree>
     <action id="DeleteSessions" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="sessionsIterator"/>
-    <action id="CreateAttendances" RequiresUpdateModel="true" Action="createRow" IterBinding="attendancesIterator"/>
+    <action id="CreateAttendances" RequiresUpdateModel="true" Action="createRow" IterBinding="attendanceIterator"/>
     <methodAction id="synchronizeSessions" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="synchronizeSessions" DataControl="SessionsService"
                   InstanceName="data.SessionsService.dataProvider" IsViewObjectMethod="false">

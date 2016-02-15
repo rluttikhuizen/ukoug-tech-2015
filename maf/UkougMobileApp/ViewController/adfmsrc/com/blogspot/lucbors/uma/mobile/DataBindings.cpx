@@ -24,7 +24,6 @@
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="SpeakersService" path="com.blogspot.lucbors.uma.mobile.SpeakersService"/>
-    <dc id="AttendancesService" path="com.blogspot.lucbors.uma.mobile.AttendancesService"/>
     <dc id="AttendanceService" path="com.blogspot.lucbors.uma.mobile.AttendanceService"/>
     <dc id="ApplicationFeatures" path="com.blogspot.lucbors.uma.application.ApplicationFeatures"/>
     <dc id="DeviceFeatures" path="com.blogspot.lucbors.uma.application.DeviceFeatures"/>

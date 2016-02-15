@@ -64,7 +64,7 @@
 
   function createRegion() {
     // Monitor any beacons in this UUID-based region
-    return new cordova.plugins.locationManager.BeaconRegion("FakeBeacon", uuid); 
+    return new cordova.plugins.locationManager.BeaconRegion("Executive7", uuid); 
   }
   
   function retrieveMessage(beacon) {

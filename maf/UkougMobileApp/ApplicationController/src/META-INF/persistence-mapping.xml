@@ -44,8 +44,8 @@
          <directMapping attributeName="track" payloadAttributeName="track" columnName="TRACK" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
          <directMapping attributeName="speakerId" payloadAttributeName="speakerId" columnName="SPEAKER_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
          <directMapping attributeName="speakerName" payloadAttributeName="speakerName" columnName="SPEAKER_NAME" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <oneToManyMapping attributeName="attendances" payloadAttributeName="attendances" referenceClassName="com.blogspot.lucbors.uma.mobile.model.Attendances" sendAsArrayIfOnlyOneEntry="true">
-            <foreignKeyColumnReference sourceTable="ATTENDANCES" sourceColumn="SESSIONS_ID" targetTable="SESSIONS" targetColumn="ID"/>
+         <oneToManyMapping attributeName="attendances" payloadAttributeName="attendances" referenceClassName="com.blogspot.lucbors.uma.mobile.model.Attendance" sendAsArrayIfOnlyOneEntry="true">
+            <foreignKeyColumnReference sourceTable="ATTENDANCE" sourceColumn="SESSION_ID" targetTable="SESSIONS" targetColumn="ID"/>
          </oneToManyMapping>
       </attributeMappings>
       <methods>
@@ -60,42 +60,23 @@
          </getCanonicalMethod>
       </methods>
    </classMappingDescriptor>
-   <classMappingDescriptor className="com.blogspot.lucbors.uma.mobile.model.Attendances" persisted="true">
-      <crudServiceClass className="com.blogspot.lucbors.uma.mobile.model.service.AttendancesService" autoIncrementPrimaryKey="true" localPersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.DBPersistenceManager" remotePersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.RestJSONPersistenceManager" remoteReadInBackground="true" remoteWriteInBackground="true" showWebServiceInvocationErrors="true" autoQuery="true" enableOfflineTransactions="true"/>
-      <table name="ATTENDANCES">
-         <primaryKeyColumn name="ID"/>
-      </table>
-      <attributeMappings>
-         <directMapping attributeName="id" payloadAttributeName="id" columnName="ID" columnDataType="NUMERIC" required="true" persisted="true" javaType="java.math.BigDecimal" keyAttribute="true"/>
-         <directMapping attributeName="status" payloadAttributeName="status" columnName="STATUS" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="attendeeId" payloadAttributeName="attendeeId" columnName="ATTENDEE_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
-         <directMapping attributeName="sessionId" payloadAttributeName="sessionId" columnName="SESSION_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
-         <directMapping attributeName="name" payloadAttributeName="name" columnName="NAME" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="username" payloadAttributeName="username" columnName="USERNAME" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="company" payloadAttributeName="company" columnName="COMPANY" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="present" payloadAttributeName="present" columnName="PRESENT" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.Boolean" keyAttribute="false"/>
-         <directMapping attributeName="rating" payloadAttributeName="rating" columnName="RATING" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="sessionsId" columnName="SESSIONS_ID" columnDataType="NUMERIC" required="false" persisted="true" parentClass="com.blogspot.lucbors.uma.mobile.model.Sessions" parentAttributeName="id" javaType="java.math.BigDecimal" keyAttribute="false"/>
-      </attributeMappings>
-      <methods>
-         <findAllMethod uri="/sessions" connectionName="UkougRestConn" requestType="GET" secured="false" sendDataObjectAsPayload="false" deleteLocalRows="true" payloadElementName="root">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
-         </findAllMethod>
-      </methods>
-   </classMappingDescriptor>
    <classMappingDescriptor className="com.blogspot.lucbors.uma.mobile.model.Attendance" persisted="true">
       <crudServiceClass className="com.blogspot.lucbors.uma.mobile.model.service.AttendanceService" autoIncrementPrimaryKey="true" localPersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.DBPersistenceManager" remotePersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.RestJSONPersistenceManager" remoteReadInBackground="true" remoteWriteInBackground="true" showWebServiceInvocationErrors="true" autoQuery="true" enableOfflineTransactions="true"/>
       <table name="ATTENDANCE">
          <primaryKeyColumn name="ID"/>
       </table>
       <attributeMappings>
+      
+      
+         <directMapping attributeName="id" payloadAttributeName="id" columnName="ID" columnDataType="NUMERIC" required="true" persisted="true" javaType="java.math.BigDecimal" keyAttribute="true"/>
+         <directMapping attributeName="name" payloadAttributeName="name" columnName="NAME" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="username" payloadAttributeName="username" columnName="USERNAME" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="company" payloadAttributeName="company" columnName="COMPANY" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="rating" payloadAttributeName="rating" columnName="RATING" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>      
          <directMapping attributeName="attendeeId" payloadAttributeName="attendeeId" columnName="ATTENDEE_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
          <directMapping attributeName="present" payloadAttributeName="present" columnName="PRESENT" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.Boolean" keyAttribute="false"/>
          <directMapping attributeName="status" payloadAttributeName="status" columnName="STATUS" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
-         <directMapping attributeName="sessionId" payloadAttributeName="sessionId" columnName="SESSION_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
-         <directMapping attributeName="id" payloadAttributeName="id" columnName="ID" columnDataType="NUMERIC" required="true" persisted="true" javaType="java.math.BigDecimal" keyAttribute="true"/>
-         <directMapping attributeName="rating" payloadAttributeName="rating" columnName="RATING" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="sessionId" payloadAttributeName="sessionId"  parentAttributeName="id" parentClass="com.blogspot.lucbors.uma.mobile.model.Sessions"  columnName="SESSION_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
       </attributeMappings>
       <methods>
          <createMethod uri="/attendance" connectionName="UkougRestConn" requestType="POST" secured="false" sendDataObjectAsPayload="true">

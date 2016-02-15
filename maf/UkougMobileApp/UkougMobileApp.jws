@@ -32,7 +32,7 @@
       <hash n="profileDefinitions">
          <hash n="Android1">
             <hash n="android_options">
-               <value n="android_deploy_debug_mode" v="false"/>
+               <value n="android_deploy_debug_mode" v="true"/>
             </hash>
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>

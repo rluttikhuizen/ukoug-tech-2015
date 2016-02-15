@@ -34,7 +34,7 @@ public class Sessions extends Entity {
     private BigDecimal speakerId;
     private String speakerName;
 
-    private List<Attendances> attendances = createIndirectList("attendances");
+    private List<Attendance> attendances = createIndirectList("attendances");
 
 
     public String getAbstract1() {
@@ -195,7 +195,7 @@ public class Sessions extends Entity {
     }
 
 
-    public void setAttendances(List<Attendances> attendances) {
+    public void setAttendances(List<Attendance> attendances) {
         this.attendances.clear();
         this.attendances.addAll(attendances);
         getProviderChangeSupport().fireProviderRefresh("attendances");
@@ -204,22 +204,22 @@ public class Sessions extends Entity {
     /**
      * This method is called when entity instance is recreated from persisted JSON string in DataSynchAction
      */
-    public void setAttendances(Attendances[] attendances) {
+    public void setAttendances(Attendance[] attendances) {
         setAttendances(Arrays.asList(attendances));
     }
 
-    public List<Attendances> getAttendances() {
+    public List<Attendance> getAttendances() {
         return this.attendances;
     }
 
 
-    public void addAttendances(int index, Attendances attendances) {
+    public void addAttendances(int index, Attendance attendances) {
         attendances.setIsNewEntity(true);
         EntityUtils.generatePrimaryKeyValue(attendances, 1);
-        attendances.setSessionsId(getId());
+        attendances.setSessionId(getId());
     }
 
-    public void removeAttendances(Attendances attendances) {
+    public void removeAttendances(Attendance attendances) {
         DBPersistenceManager pm = new DBPersistenceManager();
         pm.removeEntity(attendances, true);
     }
