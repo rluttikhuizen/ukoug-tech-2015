@@ -14,8 +14,8 @@
       </attributeMappings>
       <methods>
          <findAllMethod uri="/speakers" connectionName="UkougRestConn" requestType="GET" secured="false" sendDataObjectAsPayload="false" deleteLocalRows="true" payloadElementName="root">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
+            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
+            <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
          </findAllMethod>
       </methods>
    </classMappingDescriptor>
@@ -50,12 +50,12 @@
       </attributeMappings>
       <methods>
          <findAllMethod uri="/sessions" connectionName="UkougRestConn" requestType="GET" secured="false" sendDataObjectAsPayload="false" deleteLocalRows="true" payloadElementName="root">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
+            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
+            <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
          </findAllMethod>
          <getCanonicalMethod uri="/sessions/{id}" connectionName="UkougRestConn" requestType="GET" secured="false" sendDataObjectAsPayload="false" payloadElementName="root">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
+            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
+            <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
             <parameter name="id" valueProvider="DataObjectAttribute" dataObjectAttribute="id" pathParam="true"/>
          </getCanonicalMethod>
       </methods>
@@ -80,12 +80,12 @@
       </attributeMappings>
       <methods>
          <createMethod uri="/attendance" connectionName="UkougRestConn" requestType="POST" secured="false" sendDataObjectAsPayload="true">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
+            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
+            <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
          </createMethod>
          <updateMethod uri="/attendance" connectionName="UkougRestConn" requestType="PUT" secured="false" sendDataObjectAsPayload="true">
-            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw"/>
-            <headerParameter name="oracle-mobile-backend-id" value="27b6e049-ddd9-4d81-9258-958113629a14"/>
+            <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
+            <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
          </updateMethod>
       </methods>
    </classMappingDescriptor>

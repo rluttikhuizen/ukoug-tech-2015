@@ -92,8 +92,8 @@ public class NativePushNotificationListener implements EventListener {
                 adapter.setConnectionName("MCS");
                 adapter.setRequestType("POST");
                 adapter.setRequestURI("/platform/devices/register");
-                adapter.addRequestProperty("Authorization", "Basic TUNTREVNMDAwNF9NT0JJTEVQT1JUQUxTRVRSSUFMMDAwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOlJvNDBieXVfaG53dHZw");
-                adapter.addRequestProperty("Oracle-Mobile-Backend-ID", "27b6e049-ddd9-4d81-9258-958113629a14");
+                adapter.addRequestProperty("Authorization", "Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r");
+                adapter.addRequestProperty("Oracle-Mobile-Backend-ID", "2bf86d0c-0b2b-49ea-8d31-11d4ff127b25");
                 adapter.addRequestProperty("Content-Type", "application/json");
                 String appId = "com.company.UkougMobileApp";
                 String os = DeviceManagerFactory.getDeviceManager().getOs().equalsIgnoreCase("IOS") ? "IOS" : "ANDROID";
