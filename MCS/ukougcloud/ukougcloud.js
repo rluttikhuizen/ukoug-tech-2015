@@ -16,7 +16,11 @@ module.exports = function(service) {
 		uk.updateAttendance(req,res);
 	});
 
-	service.get('/mobile/custom/ukougcloud/sessions/:id', function(req,res) {
+	service.get('/mobile/custom/ukougcloud/attendance/:username', function(req,res) {
+		uk.getAttendancesForUser(req,res);
+	});
+
+        service.get('/mobile/custom/ukougcloud/sessions/:id', function(req,res) {
 		uk.getSessionById(req,res);
 	});
 

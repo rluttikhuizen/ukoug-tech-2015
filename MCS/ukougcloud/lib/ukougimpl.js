@@ -17,9 +17,34 @@ exports.getSpeakers = function (req, res) {
         res.status(response.statusCode).send(responseMessage);
         res.end();
     };
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/getSpeakers'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getSpeakers'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"getSpeakers": null}};
+    optionsList.body = JSON.stringify(outgoingMessage);
+    var r = req.oracleMobile.rest.post(optionsList, handler);
+};
+
+exports.getAttendancesForUser = function (req, res) {
+    var handler = function (error, response, body) {
+        var responseMessage = body;
+        if (error) {
+            responseMessage = error.message;
+        } else if (parseInt(response.statusCode) === 200) {
+            var json = JSON.parse(body);
+            console.info("SOAP body" + body);
+            var resultArray = json.Body.getAttendancesForUserByUsernameResponse.attendances;
+            console.info("SOAP spekers" + JSON.stringify(resultArray));
+            var speakers = resultArray.map(transform.attendancesSOAP2REST);
+            responseMessage = JSON.stringify(speakers);
+        }
+        res.status(response.statusCode).send(responseMessage);
+        res.end();
+    };
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getAttendancesForUserByUsername'};
+    optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
+    var outgoingMessage = {Header: null, Body: {"getAttendancesForUserByUsername":  {
+         "username": req.params.username
+      }}};
     optionsList.body = JSON.stringify(outgoingMessage);
     var r = req.oracleMobile.rest.post(optionsList, handler);
 };
@@ -62,7 +87,7 @@ var getSessionsInfo = function (body, agg, sdk, callback) {
         }
     };
 
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/getPresentations'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getPresentations'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"getPresentations": null}};
     optionsList.body = JSON.stringify(outgoingMessage);
@@ -97,7 +122,7 @@ var addSpeakerInfoToSessions = function (body, agg, sdk, callback) {
         }
     };
 
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/getSpeakers'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getSpeakers'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"getSpeakers": null}};
     optionsList.body = JSON.stringify(outgoingMessage);
@@ -155,7 +180,7 @@ var getSessionInfo = function (body, agg, sdk, callback) {
         }
     };
 
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/getPresentationById'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getPresentationById'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"getPresentationById": {"presentationId": agg.sessionId}}};
     optionsList.body = JSON.stringify(outgoingMessage);
@@ -181,7 +206,7 @@ var addSpeakerInfoToSession = function (body, agg, sdk, callback) {
         }
     };
 
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/getSpeakerById'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/getSpeakerById'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"getSpeakerById": {"speakerId": agg.session.speaker.id}}};
     optionsList.body = JSON.stringify(outgoingMessage);
@@ -218,7 +243,7 @@ exports.createAttendance = function (req, res) {
     console.info("POST BODY: " + JSON.stringify(req.body));
     var sessionId = req.body.sessionId;
     var attendeeId = req.body.attendeeId;
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/createAttendance'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/createAttendance'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"createAttendance": {
                 "attendeeId": attendeeId,
@@ -244,7 +269,7 @@ exports.updateAttendance = function (req, res) {
     console.info("PUT BODY: " + JSON.stringify(req.body));
 // Evaluation --> POSITIVE, NEUTRAL, NEGATIVE
 // Attendance status --> REGISTERED, REGISTERED_ATTENDED, NOT_REGISTERED_ATTENDED, UNREGISTERED      
-    var optionsList = {uri: '/mobile/connector/ukougdemo2/updateAttendance'};
+    var optionsList = {uri: '/mobile/connector/ukougdemo4/updateAttendance'};
     optionsList.headers = {'content-type': 'application/json;charset=UTF-8'};
     var outgoingMessage = {Header: null, Body: {"updateAttendance": {
                 "attendanceId": req.body.id,

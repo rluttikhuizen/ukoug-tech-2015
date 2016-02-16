@@ -156,6 +156,7 @@ protocols: [HTTPS]
                 	}]
                 }
                 
+    put:
 /attendance:
   post:
     protocols: [HTTPS]
@@ -215,3 +216,8 @@ protocols: [HTTPS]
               "present": true,
               "rating": "excellent"
               }
+  /{username}:
+    uriParameters:
+      username:
+        type: string
+    get:

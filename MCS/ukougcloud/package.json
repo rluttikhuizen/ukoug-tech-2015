@@ -9,7 +9,7 @@
   "oracleMobile" : {
     "dependencies" : {
       "apis" : { },
-      "connectors" : {"/mobile/connector/ukougdemo2": "1.0" }
+      "connectors" : {"/mobile/connector/ukougdemo4": "1.0" }
     }
   }
 }
