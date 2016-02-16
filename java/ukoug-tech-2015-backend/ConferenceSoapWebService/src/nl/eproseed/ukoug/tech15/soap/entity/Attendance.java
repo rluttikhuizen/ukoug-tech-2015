@@ -30,6 +30,7 @@ import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 @NamedQueries({
               @NamedQuery(name = "Attendance.findAll", query = "select o from Attendance o"),
               @NamedQuery(name = "Attendance.findById", query = "select o from Attendance o where o.id = :id"),
+              @NamedQuery(name = "Attendance.findByUsername", query = "select o from Attendance o where o.attendee.username = :username"),
     })
 @XmlType(propOrder = { "id", "attendee", "presentation", "status", "evaluation", "evaluationTimestamp" })
 public class Attendance implements Serializable {

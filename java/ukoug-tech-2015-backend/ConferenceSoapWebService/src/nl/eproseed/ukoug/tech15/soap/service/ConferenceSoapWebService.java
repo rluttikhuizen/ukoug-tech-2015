@@ -77,4 +77,8 @@ public interface ConferenceSoapWebService extends Remote {
     @WebMethod
     @WebResult(name = "evaluationSummary")
     public EvaluationSummary getEvaluationSummary(@WebParam(name = "presentationId") BigDecimal presentationId);
+    
+    @WebMethod
+    @WebResult(name = "attendances")
+    public List<Attendance> getAttendancesForUserByUsername(@WebParam(name = "username") String username);
 }
