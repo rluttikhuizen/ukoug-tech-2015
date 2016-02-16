@@ -4,89 +4,168 @@ import oracle.ateam.sample.mobile.v2.persistence.model.Entity;
 
 import java.math.BigDecimal;
 
+import java.util.Date;
 
-public class Attendance extends Entity {
 
-    private BigDecimal id;
-       private String status;
-       private BigDecimal attendeeId;
-       private BigDecimal sessionId;
-       private String name;
-       private String username;
-       private String company;
-       private Boolean present;
-       private String rating;
+public class Attendance
+  extends Entity
+{
 
-    public void setId(BigDecimal id) {
-        this.id = id;
-    }
+  private BigDecimal id;
+  private String name;
+  private String username;
+  private String company;
+  private String rating;
+  private BigDecimal attendeeId;
+  private Boolean present;
+  private String status;
+  private BigDecimal sessionId;
+  private String startTime;
+  private Date date;
+  private String hall;
+  private String presenter;
+  private String title;
 
-    public BigDecimal getId() {
-        return id;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+  public BigDecimal getId()
+  {
+    return this.id;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public void setId(BigDecimal id)
+  {
+    this.id = id;
+  }
 
-    public void setAttendeeId(BigDecimal attendeeId) {
-        this.attendeeId = attendeeId;
-    }
+  public String getName()
+  {
+    return this.name;
+  }
 
-    public BigDecimal getAttendeeId() {
-        return attendeeId;
-    }
+  public void setName(String name)
+  {
+    this.name = name;
+  }
 
-    public void setSessionId(BigDecimal sessionId) {
-        this.sessionId = sessionId;
-    }
+  public String getUsername()
+  {
+    return this.username;
+  }
 
-    public BigDecimal getSessionId() {
-        return sessionId;
-    }
+  public void setUsername(String username)
+  {
+    this.username = username;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getCompany()
+  {
+    return this.company;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setCompany(String company)
+  {
+    this.company = company;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public String getRating()
+  {
+    return this.rating;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public void setRating(String rating)
+  {
+    this.rating = rating;
+  }
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
+  public BigDecimal getAttendeeId()
+  {
+    return this.attendeeId;
+  }
 
-    public String getCompany() {
-        return company;
-    }
+  public void setAttendeeId(BigDecimal attendeeId)
+  {
+    this.attendeeId = attendeeId;
+  }
 
-    public void setPresent(Boolean present) {
-        this.present = present;
-    }
+  public Boolean getPresent()
+  {
+    return this.present;
+  }
 
-    public Boolean getPresent() {
-        return present;
-    }
+  public void setPresent(Boolean present)
+  {
+    this.present = present;
+  }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
+  public String getStatus()
+  {
+    return this.status;
+  }
 
-    public String getRating() {
-        return rating;
-    }
+  public void setStatus(String status)
+  {
+    this.status = status;
+  }
+
+  public BigDecimal getSessionId()
+  {
+    return this.sessionId;
+  }
+
+  public void setSessionId(BigDecimal sessionId)
+  {
+    this.sessionId = sessionId;
+  }
+
+  public String getStartTime()
+  {
+    return this.startTime;
+  }
+
+  public void setStartTime(String startTime)
+  {
+    this.startTime = startTime;
+  }
+
+  public Date getDate()
+  {
+    return this.date;
+  }
+
+  public void setDate(Date date)
+  {
+    this.date = date;
+  }
+
+  public String getHall()
+  {
+    return this.hall;
+  }
+
+  public void setHall(String hall)
+  {
+    this.hall = hall;
+  }
+
+  public String getPresenter()
+  {
+    return this.presenter;
+  }
+
+  public void setPresenter(String presenter)
+  {
+    this.presenter = presenter;
+  }
+
+  public String getTitle()
+  {
+    return this.title;
+  }
+
+  public void setTitle(String title)
+  {
+    this.title = title;
+  }
+
 
 }

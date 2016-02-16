@@ -171,28 +171,28 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url protocol="file" path="/Users/lbors/Oracle/Middleware/Oracle_Home/jdeveloper//jdev/extensions/oracle.ateam.mobile.persistence/DataSynchFeature.jar"/>
+                  <url path="../../../../lbors/Oracle/Middleware/Oracle_Home/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/DataSynchFeature.jar"/>
                </list>
                <value n="description" v="DataSynchFeature.jar"/>
                <value n="id" v="DataSynchFeature.jar"/>
             </hash>
             <hash>
                <list n="classPath">
-                  <url protocol="file" path="/Users/lbors/Oracle/Middleware/Oracle_Home/jdeveloper//jdev/extensions/oracle.ateam.mobile.persistence/WebServiceCallsFeature.jar"/>
+                  <url path="../../../../lbors/Oracle/Middleware/Oracle_Home/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/WebServiceCallsFeature.jar"/>
                </list>
                <value n="description" v="WebServiceCallsFeature.jar"/>
                <value n="id" v="WebServiceCallsFeature.jar"/>
             </hash>
             <hash>
                <list n="classPath">
-                  <url protocol="file" path="/Users/lbors/Oracle/Middleware/Oracle_Home/jdeveloper//jdev/extensions/oracle.ateam.mobile.persistence/DataSynchFeature.jar"/>
+                  <url path="../../../../lbors/Oracle/Middleware/Oracle_Home/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/DataSynchFeature.jar"/>
                </list>
                <value n="description" v="DataSynchFeature.jar"/>
                <value n="id" v="DataSynchFeature.jar1"/>
             </hash>
             <hash>
                <list n="classPath">
-                  <url protocol="file" path="/Users/lbors/Oracle/Middleware/Oracle_Home/jdeveloper//jdev/extensions/oracle.ateam.mobile.persistence/WebServiceCallsFeature.jar"/>
+                  <url path="../../../../lbors/Oracle/Middleware/Oracle_Home/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/WebServiceCallsFeature.jar"/>
                </list>
                <value n="description" v="WebServiceCallsFeature.jar"/>
                <value n="id" v="WebServiceCallsFeature.jar1"/>
@@ -243,6 +243,7 @@
    </hash>
    <hash n="shared-project-properties">
       <hash n="oracle.jdeveloper.runner.RunConfigurations">
+         <value n="activeName" v="iOS Simulator"/>
          <hash n="runConfigurationDefinitions">
             <hash n="Android Device">
                <hash n="Android_options">

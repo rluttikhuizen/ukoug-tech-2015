@@ -7,7 +7,7 @@
     <page path="/Sessions/Attendances.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_AttendancesPageDef"/>
     <page path="/Speakers/SpeakersList.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersListPageDef"/>
     <page path="/Speakers/Speakers.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersPageDef"/>
-    <page path="/Attendance/Attendance.amx" usageId="com_blogspot_lucbors_uma_mobile_AttendancePageDef"/>
+    <page path="/Sessions/SessionAttendance.amx" usageId="com_blogspot_lucbors_uma_mobile_AttendancePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsListPageDef"

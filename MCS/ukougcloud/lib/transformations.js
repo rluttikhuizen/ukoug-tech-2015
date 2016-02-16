@@ -7,6 +7,8 @@ exports.speakersSummarySOAP2REST = function (speaker) {
 exports.attendancesSOAP2REST = function (att) {
     removeNullAttrs(att);
     var attRest = {id: att.id, userId: att.attendee.id, sessionId:att.presentation.id, status:att.status,
+       rating:att.evaluation, username:att.attendee.username, present: (att.status==='REGISTERED_ATTENDED'),
+       name: att.attendee.name, company:att.attendee.company,
        title: att.presentation.title, presenter: att.presentation.speaker.firstname+' '+att.presentation.speaker.lastname,
        date: att.presentation.sessionDate.substr(0,10), startTime: att.presentation.startTime.substr(0,5), hall: att.presentation.hall};
     return attRest;

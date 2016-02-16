@@ -17,7 +17,7 @@
       <page>/Sessions/Attendances.amx</page>
     </view>
     <view id="Attendance">
-      <page>/Attendance/Attendance.amx</page>
+      <page>/Sessions/SessionAttendance.amx</page>
     </view>
     <router id="checkLogin">
       <case id="__13">
