@@ -118,8 +118,8 @@
                </list>
             </hash>
             <hash n="iosDeploymentOptions">
-               <value n="simulatorDeviceId" v="D4B0C5A9-6936-4002-9137-B2BFAE5C33B5"/>
-               <value n="simulatorTarget" v="iPhone 5s (iOS 8.4 - iPhone 5s)"/>
+               <value n="simulatorDeviceId" v="1BC7EF2F-6846-4D82-9F6C-B756AA77CCE5"/>
+               <value n="simulatorTarget" v="iPhone 6 (iOS 9.2 - iPhone 6)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.ios.McIosFrameworkProfile"/>
@@ -197,6 +197,20 @@
                <value n="description" v="WebServiceCallsFeature.jar"/>
                <value n="id" v="WebServiceCallsFeature.jar1"/>
             </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../../jdev1213/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/DataSynchFeature.jar"/>
+               </list>
+               <value n="description" v="DataSynchFeature.jar"/>
+               <value n="id" v="DataSynchFeature.jar11"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../../jdev1213/jdeveloper/jdev/extensions/oracle.ateam.mobile.persistence/WebServiceCallsFeature.jar"/>
+               </list>
+               <value n="description" v="WebServiceCallsFeature.jar"/>
+               <value n="id" v="WebServiceCallsFeature.jar11"/>
+            </hash>
          </list>
       </hash>
       <list n="libraryReferences">
@@ -214,6 +228,14 @@
          </hash>
          <hash>
             <value n="id" v="WebServiceCallsFeature.jar1"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="DataSynchFeature.jar11"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="WebServiceCallsFeature.jar11"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

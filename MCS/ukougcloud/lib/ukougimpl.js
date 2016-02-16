@@ -328,7 +328,7 @@ exports.rescheduleSession = function (req, res) {
     // which is the internal user who has permission to send 
     // notifications.
     var request = {
-        name: 'UKOUG',
+        name: 'CloudHacking',
         version: '1.0',
         username: 'MOBILE_NOTIFICATION_APPID'};
     var optionsList = {

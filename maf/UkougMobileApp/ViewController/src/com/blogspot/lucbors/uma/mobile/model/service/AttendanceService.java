@@ -10,6 +10,10 @@ import oracle.ateam.sample.mobile.v2.persistence.service.EntityCRUDService;
 
 import com.blogspot.lucbors.uma.mobile.model.Attendance;
 
+import java.util.HashMap;
+
+import oracle.ateam.sample.mobile.util.MCSManager;
+
 
 /**
  *  Service class that provides CRUD and custom operations against the attendance data object.
@@ -107,6 +111,14 @@ public class AttendanceService
    */
   public void saveAttendance(Attendance attendance)
   {
+    if (attendance.getRating()!=null)
+    {
+      HashMap props = new HashMap();
+      props.put("Session", attendance.getTitle());
+      props.put("Rating", attendance.getRating());      
+      MCSManager.getInstance().sendEvent(false, "EvaluationSent",props );
+      
+    }
     super.mergeEntity(attendance);
   }
 

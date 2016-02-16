@@ -60,8 +60,8 @@
          </getCanonicalMethod>
       </methods>
    </classMappingDescriptor>
-   <classMappingDescriptor className="com.blogspot.lucbors.uma.mobile.model.Attendance" persisted="true" dateFormat="yyyy-MM-dd" dateTimeFormat="yyyy-MM-dd">
-      <crudServiceClass className="com.blogspot.lucbors.uma.mobile.model.service.AttendanceService" autoIncrementPrimaryKey="true" localPersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.DBPersistenceManager" remotePersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.RestJSONPersistenceManager" remoteReadInBackground="true" remoteWriteInBackground="true" showWebServiceInvocationErrors="true" autoQuery="true" enableOfflineTransactions="true"/>
+   <classMappingDescriptor orderBy="DATE2,START_TIME" className="com.blogspot.lucbors.uma.mobile.model.Attendance" persisted="true" dateFormat="yyyy-MM-dd" dateTimeFormat="yyyy-MM-dd">
+      <crudServiceClass  className="com.blogspot.lucbors.uma.mobile.model.service.AttendanceService" autoIncrementPrimaryKey="true" localPersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.DBPersistenceManager" remotePersistenceManager="oracle.ateam.sample.mobile.v2.persistence.manager.RestJSONPersistenceManager" remoteReadInBackground="true" remoteWriteInBackground="true" showWebServiceInvocationErrors="true" autoQuery="true" enableOfflineTransactions="true"/>
       <table name="ATTENDANCE">
          <primaryKeyColumn name="ID"/>
       </table>
@@ -82,7 +82,7 @@
          <directMapping attributeName="title" payloadAttributeName="title" columnName="TITLE" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
       </attributeMappings>
       <methods>
-         <findAllMethod uri="/attendance/{username}" requestType="GET" sendDataObjectAsPayload="false" deleteLocalRows="true" payloadElementName="root">
+         <findAllMethod uri="/attendance/{username}" connectionName="UkougRestConn" requestType="GET" sendDataObjectAsPayload="false" deleteLocalRows="true" payloadElementName="root">
             <headerParameter name="Authorization" value="Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r"/>
             <headerParameter name="oracle-mobile-backend-id" value="2bf86d0c-0b2b-49ea-8d31-11d4ff127b25"/>
             <parameter name="username" value="#{applicationScope.userName}" valueProvider="ELExpression" dataObjectAttribute="id" pathParam="true"/>

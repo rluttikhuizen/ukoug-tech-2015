@@ -8,6 +8,9 @@
     <page path="/Speakers/SpeakersList.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersListPageDef"/>
     <page path="/Speakers/Speakers.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersPageDef"/>
     <page path="/Sessions/SessionAttendance.amx" usageId="com_blogspot_lucbors_uma_mobile_AttendancePageDef"/>
+    <page path="/Attendance/AttendanceList.amx"
+          usageId="com_blogspot_lucbors_uma_mobile_pageDefs_AttendanceListPageDef"/>
+    <page path="/Attendance/Attendance.amx" usageId="com_blogspot_lucbors_uma_mobile_pageDefs_AttendancePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SessionsListPageDef"
@@ -21,6 +24,10 @@
     <page id="com_blogspot_lucbors_uma_mobile_pageDefs_SpeakersPageDef"
           path="com.blogspot.lucbors.uma.mobile.pageDefs.SpeakersPageDef"/>
     <page id="com_blogspot_lucbors_uma_mobile_AttendancePageDef" path="Attendance.AttendancePageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_AttendanceListPageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.AttendanceListPageDef"/>
+    <page id="com_blogspot_lucbors_uma_mobile_pageDefs_AttendancePageDef"
+          path="com.blogspot.lucbors.uma.mobile.pageDefs.AttendancePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="SpeakersService" path="com.blogspot.lucbors.uma.mobile.SpeakersService"/>

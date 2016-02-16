@@ -14,7 +14,7 @@
     <amx:tableLayout id="tl1">
       <amx:rowLayout id="rl1">
         <amx:cellFormat id="cf1">
-          <amx:inputText label="User Name" value="#{applicationScope.userName}" id="it1"/>
+          <amx:inputText label="User Name" value="#{applicationScope.userName}" required="true" id="it1"/>
         </amx:cellFormat>
       </amx:rowLayout>
       <amx:rowLayout id="rl2">

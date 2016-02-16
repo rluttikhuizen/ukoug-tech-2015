@@ -216,8 +216,156 @@ protocols: [HTTPS]
               "present": true,
               "rating": "excellent"
               }
+              
   /{username}:
     uriParameters:
       username:
+        displayName: username
         type: string
+        required: true
     get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                [
+                  {
+                    "id": 782,
+                    "userId": 821,
+                    "sessionId": 5,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "DBaaS at Scale: Engineered Systems Consolidation in Banking",
+                    "presenter": "Jason Arneil",
+                    "date": "2016-02-16",
+                    "startTime": "09:00",
+                    "hall": "Hall 11B"
+                  },
+                  {
+                    "id": 984,
+                    "userId": 821,
+                    "sessionId": 181,
+                    "status": "REGISTERED_ATTENDED",
+                    "rating": "NEGATIVE",
+                    "username": "rob.lowe",
+                    "present": true,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Mobilizing your Business – Moving the capability from the Desktop, to Your Hand",
+                    "presenter": "Jason  Lester",
+                    "date": "2015-12-09",
+                    "startTime": "13:10",
+                    "hall": "Hall 6B"
+                  },
+                  {
+                    "id": 3283,
+                    "userId": 821,
+                    "sessionId": 14,
+                    "status": "REGISTERED_ATTENDED",
+                    "rating": "POSITIVE",
+                    "username": "rob.lowe",
+                    "present": true,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Cost Based Optimizer - Panel Session",
+                    "presenter": "Jonathan Lewis",
+                    "date": "2015-12-07",
+                    "startTime": "11:20",
+                    "hall": "Hall 5"
+                  },
+                  {
+                    "id": 3812,
+                    "userId": 821,
+                    "sessionId": 203,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "RMAN 12c Live : It's All About Recovery,Recovery,Recovery",
+                    "presenter": "René Antúnez",
+                    "date": "2015-12-09",
+                    "startTime": "15:30",
+                    "hall": "Hall 10B"
+                  },
+                  {
+                    "id": 4828,
+                    "userId": 821,
+                    "sessionId": 104,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Unified Event Processing Architecture",
+                    "presenter": "Simone Geib",
+                    "date": "2015-12-08",
+                    "startTime": "12:20",
+                    "hall": "Media Suite B"
+                  },
+                  {
+                    "id": 5401,
+                    "userId": 821,
+                    "sessionId": 24,
+                    "status": "REGISTERED",
+                    "rating": "NEUTRAL",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Deploying to Oracle SOA Suite 12c - Everything You Need to Know",
+                    "presenter": "Ahmed Aboulnaga",
+                    "date": "2015-12-07",
+                    "startTime": "12:20",
+                    "hall": "Hall 10A"
+                  },
+                  {
+                    "id": 5792,
+                    "userId": 821,
+                    "sessionId": 35,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Going Digitally Native in the Enterprise - Extending Your Oracle ADF Applications to Mobile & Cloud",
+                    "presenter": "Frank Nimphius",
+                    "date": "2015-12-07",
+                    "startTime": "14:10",
+                    "hall": "Media Suite B"
+                  },
+                  {
+                    "id": 7574,
+                    "userId": 821,
+                    "sessionId": 94,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Software in Silicon - Ground Breaking Performance Improvements",
+                    "presenter": "undefined undefined",
+                    "date": "2015-12-08",
+                    "startTime": "11:20",
+                    "hall": "Media Suite A"
+                  },
+                  {
+                    "id": 7713,
+                    "userId": 821,
+                    "sessionId": 38,
+                    "status": "REGISTERED",
+                    "username": "rob.lowe",
+                    "present": false,
+                    "name": "Rob Lowe",
+                    "company": "Warbucks Industries",
+                    "title": "Oracle Exadata Meets Elastic Configurations",
+                    "presenter": "Svetoslav Gyurov",
+                    "date": "2015-12-07",
+                    "startTime": "14:10",
+                    "hall": "Hall 9"
+                  }
+                ]

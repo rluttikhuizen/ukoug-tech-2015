@@ -3,9 +3,10 @@
                    version="1.0" name="UkougMobileApp" id="com.company.UkougMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="com.blogspot.lucbors.uma.application.LifeCycleListenerImpl">
+  <adfmf:featureReference refId="Attendance" id="fr4"/>
   <adfmf:featureReference refId="Sessions" id="fr1"/>
+  <adfmf:featureReference refId="Speakers" id="fr3"/>
   <adfmf:featureReference refId="oracle.ateam.sample.mobile.datasynch" id="oracle.ateam.sample.mobile.datasynch"
                           showOnNavigationBar="false" showOnSpringboard="false"/>
   <adfmf:featureReference refId="oracle.ateam.sample.mobile.wscalls" id="fr2"/>
-  <adfmf:featureReference refId="Speakers" id="fr3"/>
 </adfmf:application>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="firstPage">
+    <amx:facet name="header">
+      <amx:outputText value="My Sessions" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary"></amx:facet>
+    <amx:facet name="secondary">
+      <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
+        <amx:commandLink id="clmenu">
+          <amx:image id="imenu" source="/images/ic_action_overflow.png" inlineStyle="height:32px; width:32px;"/>
+          <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action" popupId="p1"/>
+        </amx:commandLink>
+        <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;"
+                   rendered="#{applicationScope.ampa_bgtask_running}"/>
+      </amx:panelGroupLayout>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
+      <amx:facet name="top">
+        <amx:panelGroupLayout id="pgl1" layout="horizontal">
+          <amx:inputText value="#{bindings.searchValue.inputValue}" hintText="Search My Sessions" label="" id="it1"/>
+          <amx:commandLink actionListener="#{bindings.findAttendance.execute}" id="cb3">
+            <amx:image id="ifind" source="/images/ic_action_search.png" inlineStyle="height:32px; width:32px;"/>
+          </amx:commandLink>
+        </amx:panelGroupLayout>
+      </amx:facet>
+      <amx:facet name="center">
+        <amx:listView var="row" value="#{bindings.attendance.collectionModel}"
+                      fetchSize="#{bindings.attendance.rangeSize}" id="lv1"
+                      selectedRowKeys="#{bindings.attendance.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.attendance.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport">
+          <amx:listItem id="li2" action="Attendance">
+            <amx:tableLayout width="100%" id="tl1Attendance">
+              <amx:rowLayout id="rl1Attendance">
+                <amx:cellFormat width="10px" rowSpan="2" id="cf2Attendance"/>
+                <amx:cellFormat width="100%" height="28px" columnSpan="2" id="cf3Attendance">
+                  <amx:outputText value="#{row.title}" id="ot2Attendance"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+              <amx:rowLayout id="rl2Attendance">
+                <amx:cellFormat width="60%" height="12px" id="cf5Attendance">
+                  <amx:outputText value="#{row.presenter}" styleClass="adfmf-listItem-captionText" id="ot4Attendance"/>
+                </amx:cellFormat>
+                <amx:cellFormat width="40%" halign="end" id="cf6Attendance">
+                  <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+                    <amx:outputText value="#{row.date}" styleClass="adfmf-listItem-captionText"
+                                    id="ot5Afttendance">
+                      <amx:convertDateTime id="cdt1" pattern="dd MMM"/>
+                    </amx:outputText>
+                    <amx:spacer id="s1" width="5"/>
+                    <amx:outputText value="#{row.startTime}" styleClass="adfmf-listItem-captionText"
+                                    id="ot5Attendance"/>
+                    <amx:spacer id="s2" width="5"/>
+                    <amx:outputText value="#{row.hall}" styleClass="adfmf-listItem-captionText"
+                                    id="hall"/>
+                  </amx:panelGroupLayout>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+          </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+  <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
+    <amx:panelGroupLayout id="pglpu" layout="vertical">
+      <amx:spacer height="10" id="ms1"/>
+      <amx:commandLink text="Refresh" actionListener="#{bindings.findAllAttendanceRemote.execute}"
+                       disabled="#{deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown' or Connectivity.offline}"
+                       id="menRefr">
+        <amx:closePopupBehavior id="mencRefr" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms2"/>
+      <amx:commandLink id="menSync"
+                       disabled="#{!applicationScope.ampa_hasDataSyncActions or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown' or Connectivity.offline}"
+                       actionListener="#{bindings.synchronize.execute}" text="Synchronize">
+        <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms3"/>
+      <amx:commandLink id="menPsa" disabled="#{!applicationScope.ampa_hasDataSyncActions}" text="Pending Sync Actions"
+                       actionListener="#{GoToFeature.goToDataSynchFeature}">
+        <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms4"/>
+      <amx:commandLink id="menFo" text="#{Connectivity.forceOffline ? 'Unforce offline' : 'Force offline'}">
+        <amx:setPropertyListener id="menfospl" from="#{!Connectivity.forceOffline}" to="#{Connectivity.forceOffline}"/>
+        <amx:closePopupBehavior id="mencFo" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="10" id="ms5"/>
+    </amx:panelGroupLayout>
+  </amx:popup>
+</amx:view>

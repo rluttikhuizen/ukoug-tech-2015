@@ -14,4 +14,9 @@
       <adfmf:amx file="Speakers/Speakers-task-flow.xml#Speakers-task-flow"/>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="Attendance" name="My Sessions">
+    <adfmf:content id="Attendance.1">
+      <adfmf:amx file="Attendance/Attendance-task-flow.xml#Attendance-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>

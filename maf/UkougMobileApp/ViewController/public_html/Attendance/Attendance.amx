@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="My Session" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton action="__back" id="cbbck" text="Back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:panelGroupLayout id="pglsec" layout="horizontal" valign="middle">
+        <amx:commandLink actionListener="#{bindings.saveAttendance.execute}" action="__back" id="cb2">
+          <amx:image id="isave" source="/images/ic_action_save.png" inlineStyle="height:32px; width:32px;"/>
+        </amx:commandLink>
+        <amx:commandLink id="clmenu">
+          <amx:image id="imenu" source="/images/ic_action_overflow.png" inlineStyle="height:32px; width:32px;"/>
+          <amx:showPopupBehavior align="bottomCenter" decoration="anchor" alignId="clmenu" type="action" popupId="p1"/>
+        </amx:commandLink>
+        <amx:image id="bgRunImg" source="/images/reloading.gif" inlineStyle="margin-right:5px;"
+                   rendered="#{applicationScope.ampa_bgtask_running}"/>
+      </amx:panelGroupLayout>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1" scrollPolicy="scroll">
+      <amx:facet name="top">
+        <amx:panelFormLayout id="pfl1" fieldHalign="start" showHorizontalDividers="false" labelWidth="20%" fieldWidth="80%" labelPosition="end">
+          <amx:inputText value="#{bindings.title.inputValue}" label="#{bindings.title.hints.label}" readOnly="true"
+                         id="it14"></amx:inputText>
+          <amx:inputText value="#{bindings.presenter.inputValue}" label="#{bindings.presenter.hints.label}"
+                         readOnly="false" id="it13"></amx:inputText>
+          <amx:inputText value="#{bindings.status.inputValue}" label="#{bindings.status.hints.label}" readOnly="true"
+                         id="it8"></amx:inputText>
+          <amx:selectBooleanCheckbox value="#{bindings.present.inputValue}" label="Attended" id="sbc1" readOnly="true"/>
+
+          <amx:inputText value="#{bindings.date.inputValue}" label="#{bindings.date.hints.label}" readOnly="true"
+                         id="it11">
+            <amx:convertDateTime id="cdt1" pattern="dd MMM"/>
+          </amx:inputText>
+          <amx:inputText value="#{bindings.startTime.inputValue}" label="#{bindings.startTime.hints.label}"
+                         readOnly="true" id="it10"></amx:inputText>
+          <amx:inputText value="#{bindings.hall.inputValue}" label="#{bindings.hall.hints.label}" readOnly="true"
+                         id="it12"></amx:inputText>
+
+
+
+          <amx:inputText value="#{bindings.rating.inputValue}" label="#{bindings.rating.hints.label}" readOnly="false"
+                         id="it5"></amx:inputText>
+        </amx:panelFormLayout>
+        <amx:outputText value="Rate your Session!" id="ot2"/>
+        <amx:tableLayout id="tl1" width="100%">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" width="33%" halign="center">
+                    <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cl2"
+                    actionListener="#{bindings.saveAttendance.execute}">
+                        <amx:image id="i3" source="/images/NEGATIVE.png" inlineStyle="width:66%;"/>
+                        <amx:setPropertyListener from="NEGATIVE" to="#{bindings.rating.inputValue}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2" width="33%" halign="center">
+                    <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cb3"
+                                        actionListener="#{bindings.saveAttendance.execute}">
+                        <amx:image id="i2" source="/images/NEUTRAL.png" inlineStyle="width:66%;"/>
+                        <amx:setPropertyListener from="NEUTRAL" to="#{bindings.rating.inputValue}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf3" width="33%" halign="center">
+                    <amx:commandLink text="" rendered="#{empty bindings.rating.inputValue}" id="cb4"
+                                        actionListener="#{bindings.saveAttendance.execute}">
+                        <amx:image id="i1" source="/images/POSITIVE.png" inlineStyle="width:66%;"/>
+                        <amx:setPropertyListener from="POSITIVE" to="#{bindings.rating.inputValue}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+
+      </amx:facet>
+      <amx:facet name="center"></amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+  <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
+    <amx:panelGroupLayout id="pglpu" layout="vertical">
+      <amx:spacer height="10" id="ms1"/>
+      <amx:commandLink id="menSync"
+                       disabled="#{!applicationScope.ampa_hasDataSyncActions or deviceScope.hardware.networkStatus=='NotReachable' or deviceScope.hardware.networkStatus=='unknown' or Connectivity.offline}"
+                       actionListener="#{bindings.synchronize.execute}" text="Synchronize">
+        <amx:closePopupBehavior id="mencSync" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms3"/>
+      <amx:commandLink id="menPsa" disabled="#{!applicationScope.ampa_hasDataSyncActions}" text="Pending Sync Actions"
+                       actionListener="#{GoToFeature.goToDataSynchFeature}">
+        <amx:closePopupBehavior id="mencPsa" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="20" id="ms4"/>
+      <amx:commandLink id="menFo" text="#{Connectivity.forceOffline ? 'Unforce offline' : 'Force offline'}">
+        <amx:setPropertyListener id="menfospl" from="#{!Connectivity.forceOffline}" to="#{Connectivity.forceOffline}"/>
+        <amx:closePopupBehavior id="mencFo" popupId="p1" type="action"/>
+      </amx:commandLink>
+      <amx:spacer height="10" id="ms5"/>
+    </amx:panelGroupLayout>
+  </amx:popup>
+</amx:view>
