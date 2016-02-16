@@ -30,6 +30,7 @@ public interface ConferenceServiceLocal {
     Attendance getAttendanceById(BigDecimal attendanceId);
     Attendance createAttendance(BigDecimal attendeeId, BigDecimal presentationId);
     Attendance updateAttendance(BigDecimal attendanceId, String status, String evaluation);
+    List<Attendance> getAttendancesForUserByUsername(String username);
     
     EvaluationSummary getEvaluationSummary(BigDecimal presentationId);
 }

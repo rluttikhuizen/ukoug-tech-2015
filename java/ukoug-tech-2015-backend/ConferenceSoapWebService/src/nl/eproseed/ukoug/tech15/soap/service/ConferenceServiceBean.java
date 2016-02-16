@@ -287,6 +287,25 @@ public class ConferenceServiceBean implements ConferenceService, ConferenceServi
         return attendance;
     }
 
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @Override
+    public List<Attendance> getAttendancesForUserByUsername(String username) {
+
+        List<Attendance> attendances = null;
+
+        try {
+
+            attendances =
+                em.createNamedQuery("Attendance.findByUsername", Attendance.class).setParameter("username",
+                                                                                          username).getResultList();
+        } catch (NoResultException e) {
+
+            throw new ConferenceException("No attendances found for username " + username);
+        }
+
+        return attendances;
+    }
+
     @Override
     public EvaluationSummary getEvaluationSummary(BigDecimal presentationId) {
 
