@@ -2,11 +2,6 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="Sessions-task-flow">
     <default-activity>checkLogin</default-activity>
-    <managed-bean id="__14">
-      <managed-bean-name>sessionsBean</managed-bean-name>
-      <managed-bean-class>com.blogspot.lucbors.uma.mobile.beans.SessionsBean</managed-bean-class>
-      <managed-bean-scope>pageFlow</managed-bean-scope>
-    </managed-bean>
     <view id="SessionsList">
       <page>/Sessions/SessionsList.amx</page>
     </view>

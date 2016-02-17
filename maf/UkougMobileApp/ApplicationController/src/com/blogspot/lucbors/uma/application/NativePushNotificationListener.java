@@ -16,106 +16,86 @@ import oracle.adfmf.framework.event.EventListener;
 import oracle.adfmf.framework.exception.AdfException;
 
 import oracle.ateam.sample.mobile.util.ADFMobileLogger;
+import oracle.ateam.sample.mobile.v2.persistence.manager.MCSPersistenceManager;
 
-public class NativePushNotificationListener implements EventListener {
-    
-    private static ADFMobileLogger sLog = ADFMobileLogger.createLogger(NativePushNotificationListener.class);
+public class NativePushNotificationListener
+  implements EventListener
+{
+
+  private static ADFMobileLogger sLog = ADFMobileLogger.createLogger(NativePushNotificationListener.class);
 
 
-    public NativePushNotificationListener() {
+  public NativePushNotificationListener()
+  {
+  }
+
+
+  public void onMessage(Event event)
+  {
+    String msg = event.getPayload();
+    System.out.println("#### Message from the Server :" + msg);
+
+    // Parse the payload of the push notification
+    HashMap payload = null;
+    String pushMsg = "No message received";
+    try
+    {
+      payload = (HashMap) JSONBeanSerializationHelper.fromJSON(HashMap.class, msg);
+      pushMsg = (String) payload.get("alert");
     }
-    
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    // Write the push message to app scope to display to the user
+    AdfmfJavaUtilities.setELValue("#{applicationScope.pushMessage}", pushMsg);
 
-    public void onMessage(Event event) {
-        String msg = event.getPayload();
-        System.out.println("#### Message from the Server :" + msg);
-        
-        // Parse the payload of the push notification
-        HashMap payload = null;
-        String pushMsg = "No message received";
-        try
-        {
-          payload = (HashMap)JSONBeanSerializationHelper.fromJSON(HashMap.class, msg);
-          pushMsg = (String)payload.get("alert");
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-        // Write the push message to app scope to display to the user        
-        AdfmfJavaUtilities.setELValue("#{applicationScope.pushMessage}", pushMsg);
-        
-        // Now open the Sessions Feature and navigate to the appropiate session.
-        // The session Id should be part of the pushmessage's payoad
-        // 
-       
-       /*
+    // Now open the Sessions Feature and navigate to the appropiate session.
+    // The session Id should be part of the pushmessage's payoad
+    //
+
+    /*
         String sessionId = pushMsg = (String)payload.get("sessionId");
         ValueExpression ve =
         AdfmfJavaUtilities.getValueExpression("#{applicationScope.sessionId}", String.class);
-        
+
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), sessionId);
-        
+
         AdfmfContainerUtilities.gotoFeature("Sessions");
-        
+
         //and navigate (perhaps this ust be transferred to Sessions feature.
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                           "adf.mf.api.amx.doNavigation", new Object[] {
                                                                           "showSessionById" });
        */
+  }
+
+  public void onError(AdfException adfException)
+  {
+    System.out.println("#### Error: " + adfException.toString());
+    // Write the error into app scope
+
+    sLog.severe("#### Error: " + adfException.toString());
+
+    AdfmfJavaUtilities.setELValue("#{applicationScope.errorMessage}", adfException.toString());
+
+  }
+
+
+  public void onOpen(String id)
+  {
+    AdfmfJavaUtilities.setELValue("#{applicationScope.deviceToken}", id);
+    try
+    {
+      String result = new MCSPersistenceManager().registerDevice(id, "com.company.UkougMobileApp", "1.0");
+      AdfmfJavaUtilities.setELValue("#{applicationScope.registerDeviceReturnPayload}", result);
     }
-
-    public void onError(AdfException adfException) {
-        System.out.println("#### Error: " + adfException.toString());
-        // Write the error into app scope        
-        
-        sLog.severe("#### Error: " + adfException.toString());
-        
-        AdfmfJavaUtilities.setELValue("#{applicationScope.errorMessage}", adfException.toString());
-
+    catch (Exception e)
+    {
+      AdfmfJavaUtilities.setELValue("#{applicationScope.registerDeviceReturnPayload}", e.getLocalizedMessage());
+      throw new AdfException(e.getLocalizedMessage(), AdfException.ERROR);
     }
+  }
 
-  
 
-        public void onOpen(String id) {
-                
-                System.out.println("Entering onOpen with device Token :" + id);
-                
-                sLog.severe("Entering onOpen with device Token :" + id);
-
-                
-                ValueExpression ve =
-                    AdfmfJavaUtilities.getValueExpression("#{applicationScope.deviceToken}", String.class);
-                ve.setValue(AdfmfJavaUtilities.getAdfELContext(), id);
-
-                RestServiceAdapter adapter = Model.createRestServiceAdapter();
-                adapter.clearRequestProperties();
-                adapter.setConnectionName("MCS");
-                adapter.setRequestType("POST");
-                adapter.setRequestURI("/platform/devices/register");
-                adapter.addRequestProperty("Authorization", "Basic TUNTREVNMDAwMV9NT0JJTEVQT1JUQUxTRVRSSUFMMTMwNERFVl9NT0JJTEVfQU5PTllNT1VTX0FQUElEOmR5Nm91NW5wX3RnbE5r");
-                adapter.addRequestProperty("Oracle-Mobile-Backend-ID", "2bf86d0c-0b2b-49ea-8d31-11d4ff127b25");
-                adapter.addRequestProperty("Content-Type", "application/json");
-                String appId = "com.company.UkougMobileApp";
-                String os = DeviceManagerFactory.getDeviceManager().getOs().equalsIgnoreCase("IOS") ? "IOS" : "ANDROID";
-                String payload =
-                    "{\"notificationToken\": \""+id+"\",\"mobileClient\": {\"id\": \"" + appId +
-                    "\",\"version\": \"1.0\",\"platform\": \""+os+"\"}}";
-                try {
-                    ValueExpression ve2 =
-                        AdfmfJavaUtilities.getValueExpression("#{applicationScope.registerDevicePayload}", String.class);
-                    ve2.setValue(AdfmfJavaUtilities.getAdfELContext(), payload);
-                    
-                    String result = adapter.send(payload);
-                    ValueExpression ve3 =
-                        AdfmfJavaUtilities.getValueExpression("#{applicationScope.registerDeviceReturnPayload}", String.class);
-                    ve3.setValue(AdfmfJavaUtilities.getAdfELContext(), result);
-                } catch (Exception e) {
-                    ValueExpression ve3 =
-                        AdfmfJavaUtilities.getValueExpression("#{applicationScope.registerDeviceReturnPayload}", String.class);
-                    ve3.setValue(AdfmfJavaUtilities.getAdfELContext(), e.getLocalizedMessage());
-                    throw new AdfException(e.getLocalizedMessage(), AdfException.ERROR);
-                }
-            }
-
-    
 }

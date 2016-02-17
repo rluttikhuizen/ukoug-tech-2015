@@ -35,15 +35,4 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
-  <Reference name="UkougRestConn" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
-    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="UkougRestConn">
-        <Contents>
-          <restconnection name="UkougRestConn"
-                          url="https://mobileportalsetrial1304dev-mcsdem0001.mobileenv.us2.oraclecloud.com:443/mobile/custom/ukougcloud"/>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference>
 </References>

@@ -4,7 +4,7 @@
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:commandLink text="Sessions Details" id="ot1">
-                <amx:showPopupBehavior id="spb1" alignId="ot1" popupId="debug" type="tapHold"/>
+                <amx:showPopupBehavior id="spb1" alignId="ot1" popupId="debug" align="overlapMiddleCenter"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="primary">
@@ -240,14 +240,8 @@
             <amx:outputText value="uName: #{applicationScope.userName}" id="ot4a"/>
             <amx:outputText value="Device Token:" id="ot4"/>
             <amx:outputText value="#{applicationScope.deviceToken}" id="ot54"/>
-            <amx:outputText value="Register Device Request Payload:" id="ot34"/>
-            <amx:outputText value="#{applicationScope.registerDevicePayload}" id="otr"/>
             <amx:outputText value="Register Device Response Payload:" id="ote4"/>
             <amx:outputText value="#{applicationScope.registerDeviceReturnPayload}" id="otwr"/>
-            <!--
-      <amx:commandButton actionListener="#{bindings.sendEmail.execute}" text="Email Payload" styleClass="email"
-                         disabled="#{!bindings.sendEmail.enabled}" id="cb1"/>
-     -->
         </amx:panelGroupLayout>
     </amx:popup>
     <amx:popup id="p1" animation="slideDown" autoDismiss="true" inlineStyle="width:50%;">
